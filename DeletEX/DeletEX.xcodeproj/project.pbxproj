@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */; };
+		4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C382C38B7FD005B5823 /* ContentView.swift */; };
+		4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3A2C38B801005B5823 /* Assets.xcassets */; };
+		4DFC5C3E2C38B801005B5823 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3D2C38B801005B5823 /* Preview Assets.xcassets */; };
+		4DFC5C482C38B802005B5823 /* DeletEXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C472C38B802005B5823 /* DeletEXTests.swift */; };
+		4DFC5C522C38B802005B5823 /* DeletEXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C512C38B802005B5823 /* DeletEXUITests.swift */; };
+		4DFC5C542C38B802005B5823 /* DeletEXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C532C38B802005B5823 /* DeletEXUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4DFC5C442C38B801005B5823 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DFC5C2B2C38B7FD005B5823 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DFC5C322C38B7FD005B5823;
+			remoteInfo = DeletEX;
+		};
+		4DFC5C4E2C38B802005B5823 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DFC5C2B2C38B7FD005B5823 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4DFC5C322C38B7FD005B5823;
+			remoteInfo = DeletEX;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4DFC5C332C38B7FD005B5823 /* DeletEX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeletEX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXApp.swift; sourceTree = "<group>"; };
+		4DFC5C382C38B7FD005B5823 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4DFC5C3A2C38B801005B5823 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DFC5C3D2C38B801005B5823 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4DFC5C432C38B801005B5823 /* DeletEXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeletEXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFC5C472C38B802005B5823 /* DeletEXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXTests.swift; sourceTree = "<group>"; };
+		4DFC5C4D2C38B802005B5823 /* DeletEXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeletEXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFC5C512C38B802005B5823 /* DeletEXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXUITests.swift; sourceTree = "<group>"; };
+		4DFC5C532C38B802005B5823 /* DeletEXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4DFC5C302C38B7FD005B5823 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DFC5C402C38B801005B5823 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DFC5C4A2C38B802005B5823 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4DFC5C2A2C38B7FD005B5823 = {
+			isa = PBXGroup;
+			children = (
+				4DFC5C352C38B7FD005B5823 /* DeletEX */,
+				4DFC5C462C38B802005B5823 /* DeletEXTests */,
+				4DFC5C502C38B802005B5823 /* DeletEXUITests */,
+				4DFC5C342C38B7FD005B5823 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4DFC5C342C38B7FD005B5823 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DFC5C332C38B7FD005B5823 /* DeletEX.app */,
+				4DFC5C432C38B801005B5823 /* DeletEXTests.xctest */,
+				4DFC5C4D2C38B802005B5823 /* DeletEXUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
+			isa = PBXGroup;
+			children = (
+				4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */,
+				4DFC5C382C38B7FD005B5823 /* ContentView.swift */,
+				4DFC5C3A2C38B801005B5823 /* Assets.xcassets */,
+				4DFC5C3C2C38B801005B5823 /* Preview Content */,
+			);
+			path = DeletEX;
+			sourceTree = "<group>";
+		};
+		4DFC5C3C2C38B801005B5823 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4DFC5C3D2C38B801005B5823 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4DFC5C462C38B802005B5823 /* DeletEXTests */ = {
+			isa = PBXGroup;
+			children = (
+				4DFC5C472C38B802005B5823 /* DeletEXTests.swift */,
+			);
+			path = DeletEXTests;
+			sourceTree = "<group>";
+		};
+		4DFC5C502C38B802005B5823 /* DeletEXUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4DFC5C512C38B802005B5823 /* DeletEXUITests.swift */,
+				4DFC5C532C38B802005B5823 /* DeletEXUITestsLaunchTests.swift */,
+			);
+			path = DeletEXUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4DFC5C322C38B7FD005B5823 /* DeletEX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DFC5C572C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEX" */;
+			buildPhases = (
+				4DFC5C2F2C38B7FD005B5823 /* Sources */,
+				4DFC5C302C38B7FD005B5823 /* Frameworks */,
+				4DFC5C312C38B7FD005B5823 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DeletEX;
+			productName = DeletEX;
+			productReference = 4DFC5C332C38B7FD005B5823 /* DeletEX.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4DFC5C422C38B801005B5823 /* DeletEXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DFC5C5A2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXTests" */;
+			buildPhases = (
+				4DFC5C3F2C38B801005B5823 /* Sources */,
+				4DFC5C402C38B801005B5823 /* Frameworks */,
+				4DFC5C412C38B801005B5823 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DFC5C452C38B801005B5823 /* PBXTargetDependency */,
+			);
+			name = DeletEXTests;
+			productName = DeletEXTests;
+			productReference = 4DFC5C432C38B801005B5823 /* DeletEXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4DFC5C4C2C38B802005B5823 /* DeletEXUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4DFC5C5D2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXUITests" */;
+			buildPhases = (
+				4DFC5C492C38B802005B5823 /* Sources */,
+				4DFC5C4A2C38B802005B5823 /* Frameworks */,
+				4DFC5C4B2C38B802005B5823 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4DFC5C4F2C38B802005B5823 /* PBXTargetDependency */,
+			);
+			name = DeletEXUITests;
+			productName = DeletEXUITests;
+			productReference = 4DFC5C4D2C38B802005B5823 /* DeletEXUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4DFC5C2B2C38B7FD005B5823 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					4DFC5C322C38B7FD005B5823 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					4DFC5C422C38B801005B5823 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 4DFC5C322C38B7FD005B5823;
+					};
+					4DFC5C4C2C38B802005B5823 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 4DFC5C322C38B7FD005B5823;
+					};
+				};
+			};
+			buildConfigurationList = 4DFC5C2E2C38B7FD005B5823 /* Build configuration list for PBXProject "DeletEX" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4DFC5C2A2C38B7FD005B5823;
+			productRefGroup = 4DFC5C342C38B7FD005B5823 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4DFC5C322C38B7FD005B5823 /* DeletEX */,
+				4DFC5C422C38B801005B5823 /* DeletEXTests */,
+				4DFC5C4C2C38B802005B5823 /* DeletEXUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4DFC5C312C38B7FD005B5823 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DFC5C3E2C38B801005B5823 /* Preview Assets.xcassets in Resources */,
+				4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DFC5C412C38B801005B5823 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DFC5C4B2C38B802005B5823 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4DFC5C2F2C38B7FD005B5823 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */,
+				4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DFC5C3F2C38B801005B5823 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DFC5C482C38B802005B5823 /* DeletEXTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DFC5C492C38B802005B5823 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4DFC5C542C38B802005B5823 /* DeletEXUITestsLaunchTests.swift in Sources */,
+				4DFC5C522C38B802005B5823 /* DeletEXUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4DFC5C452C38B801005B5823 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DFC5C322C38B7FD005B5823 /* DeletEX */;
+			targetProxy = 4DFC5C442C38B801005B5823 /* PBXContainerItemProxy */;
+		};
+		4DFC5C4F2C38B802005B5823 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4DFC5C322C38B7FD005B5823 /* DeletEX */;
+			targetProxy = 4DFC5C4E2C38B802005B5823 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4DFC5C552C38B802005B5823 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4DFC5C562C38B802005B5823 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4DFC5C582C38B802005B5823 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DeletEX/Preview Content\"";
+				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4DFC5C592C38B802005B5823 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"DeletEX/Preview Content\"";
+				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4DFC5C5B2C38B802005B5823 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeletEX.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeletEX";
+			};
+			name = Debug;
+		};
+		4DFC5C5C2C38B802005B5823 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeletEX.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeletEX";
+			};
+			name = Release;
+		};
+		4DFC5C5E2C38B802005B5823 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeletEX;
+			};
+			name = Debug;
+		};
+		4DFC5C5F2C38B802005B5823 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DeletEX;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4DFC5C2E2C38B7FD005B5823 /* Build configuration list for PBXProject "DeletEX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DFC5C552C38B802005B5823 /* Debug */,
+				4DFC5C562C38B802005B5823 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DFC5C572C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DFC5C582C38B802005B5823 /* Debug */,
+				4DFC5C592C38B802005B5823 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DFC5C5A2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DFC5C5B2C38B802005B5823 /* Debug */,
+				4DFC5C5C2C38B802005B5823 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4DFC5C5D2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4DFC5C5E2C38B802005B5823 /* Debug */,
+				4DFC5C5F2C38B802005B5823 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4DFC5C2B2C38B7FD005B5823 /* Project object */;
+}
