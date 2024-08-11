@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
+		4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */; };
 		4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */; };
 		4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C382C38B7FD005B5823 /* ContentView.swift */; };
 		4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3A2C38B801005B5823 /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
+		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
 		4DFC5C332C38B7FD005B5823 /* DeletEX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeletEX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXApp.swift; sourceTree = "<group>"; };
 		4DFC5C382C38B7FD005B5823 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +75,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DAB30A92C68E7C8002D037A /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4DAB30AC2C68E81E002D037A /* ScanPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */,
+			);
+			path = ScanPhotos;
+			sourceTree = "<group>";
+		};
 		4DFC5C2A2C38B7FD005B5823 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +114,8 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
+				4DAB30AC2C68E81E002D037A /* ScanPhotos */,
+				4DAB30A92C68E7C8002D037A /* Util */,
 				4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */,
 				4DFC5C382C38B7FD005B5823 /* ContentView.swift */,
 				4DFC5C3A2C38B801005B5823 /* Assets.xcassets */,
@@ -257,6 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */,
+				4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */,
 				4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */,
 				4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */,
 			);
@@ -425,6 +449,7 @@
 				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage, and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +479,7 @@
 				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage, and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
