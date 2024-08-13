@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0E43922C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E43912C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift */; };
+		4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E43942C6ACD1100ECB9D1 /* ReviewPhotosView.swift */; };
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
 		4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */; };
+		4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */; };
 		4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */; };
 		4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C382C38B7FD005B5823 /* ContentView.swift */; };
 		4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3A2C38B801005B5823 /* Assets.xcassets */; };
@@ -36,8 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D0E43912C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAccessView.swift; sourceTree = "<group>"; };
+		4D0E43942C6ACD1100ECB9D1 /* ReviewPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPhotosView.swift; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
+		4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationView.swift; sourceTree = "<group>"; };
 		4DFC5C332C38B7FD005B5823 /* DeletEX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeletEX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXApp.swift; sourceTree = "<group>"; };
 		4DFC5C382C38B7FD005B5823 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +81,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D0E43902C6ABC8500ECB9D1 /* PhotoLibraryAccess */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E43912C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift */,
+			);
+			path = PhotoLibraryAccess;
+			sourceTree = "<group>";
+		};
+		4D0E43932C6ACD0200ECB9D1 /* ReviewPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				4D0E43942C6ACD1100ECB9D1 /* ReviewPhotosView.swift */,
+			);
+			path = ReviewPhotos;
+			sourceTree = "<group>";
+		};
 		4DAB30A92C68E7C8002D037A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +111,14 @@
 				4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */,
 			);
 			path = ScanPhotos;
+			sourceTree = "<group>";
+		};
+		4DAB30AF2C690F41002D037A /* DeleteConfirmation */ = {
+			isa = PBXGroup;
+			children = (
+				4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */,
+			);
+			path = DeleteConfirmation;
 			sourceTree = "<group>";
 		};
 		4DFC5C2A2C38B7FD005B5823 = {
@@ -114,6 +144,9 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
+				4D0E43932C6ACD0200ECB9D1 /* ReviewPhotos */,
+				4D0E43902C6ABC8500ECB9D1 /* PhotoLibraryAccess */,
+				4DAB30AF2C690F41002D037A /* DeleteConfirmation */,
 				4DAB30AC2C68E81E002D037A /* ScanPhotos */,
 				4DAB30A92C68E7C8002D037A /* Util */,
 				4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */,
@@ -279,10 +312,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */,
 				4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */,
+				4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */,
 				4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */,
 				4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */,
 				4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */,
+				4D0E43922C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
