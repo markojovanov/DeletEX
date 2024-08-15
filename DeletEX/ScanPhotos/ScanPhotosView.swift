@@ -10,9 +10,9 @@ import SwiftUI
 import Vision
 
 struct ScanPhotosView: View {
-    @State private var faceImages: [UIImage] = []
+    @State private var faceImages: [PhotoItem] = []
     @State private var isLoading = false
-    @State private var selectedImage: UIImage? = nil
+    @State private var selectedImage: PhotoItem? = nil
     @State private var showSelectedImageView = false
     @State private var areFaceImagesLoaded = false
 
@@ -63,11 +63,11 @@ struct ScanPhotosView: View {
                     .padding(.top, 8)
                     ScrollView {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
-                            ForEach(faceImages, id: \.self) { image in
+                            ForEach(faceImages, id: \.self) { photoItem in
                                 Button(action: {
-                                    onImageSelected(image)
+                                    onImageSelected(photoItem)
                                 }) {
-                                    Image(uiImage: image)
+                                    Image(uiImage: photoItem.image)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 100, height: 100)
@@ -106,8 +106,8 @@ struct ScanPhotosView: View {
         }
     }
 
-    private func onImageSelected(_ image: UIImage) {
-        selectedImage = image
+    private func onImageSelected(_ photoItem: PhotoItem) {
+        selectedImage = photoItem
         showSelectedImageView = true
     }
 
@@ -139,7 +139,7 @@ struct ScanPhotosView: View {
                     let request = VNDetectFaceRectanglesRequest { request, _ in
                         if let results = request.results as? [VNFaceObservation], !results.isEmpty {
                             DispatchQueue.main.async {
-                                self.faceImages.append(image)
+                                self.faceImages.append(PhotoItem(image: image, phAsset: asset))
                             }
                         }
                     }

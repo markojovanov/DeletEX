@@ -5,17 +5,18 @@
 //  Created by Marko Jovanov on 13.8.24.
 //
 
+import Photos
 import SwiftUI
 
 struct ReviewPhotosView: View {
-    let images: [UIImage]
+    let personImages: [PhotoItem]
     @State private var selectedImages: Set<Int> = []
 
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
-                    ForEach(images.indices, id: \.self) { index in
+                    ForEach(personImages.indices, id: \.self) { index in
                         imageView(for: index)
                     }
                 }
@@ -49,20 +50,20 @@ struct ReviewPhotosView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    if selectedImages.count == images.count {
+                    if selectedImages.count == personImages.count {
                         deselectAllImages()
                     } else {
                         selectAllImages()
                     }
                 } label: {
-                    Text(selectedImages.count == images.count ? "Deselect All" : "Select All")
+                    Text(selectedImages.count == personImages.count ? "Deselect All" : "Select All")
                 }
             }
         }
     }
 
     private func imageView(for index: Int) -> some View {
-        Image(uiImage: images[index])
+        Image(uiImage: personImages[index].image)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 100, height: 100)
@@ -97,7 +98,7 @@ struct ReviewPhotosView: View {
     }
 
     private func selectAllImages() {
-        selectedImages = Set(images.indices)
+        selectedImages = Set(personImages.indices)
     }
 
     private func deselectAllImages() {
@@ -110,5 +111,5 @@ struct ReviewPhotosView: View {
 }
 
 #Preview {
-    ReviewPhotosView(images: [UIImage()])
+    ReviewPhotosView(personImages: [PhotoItem(image: UIImage(), phAsset: PHAsset())])
 }
