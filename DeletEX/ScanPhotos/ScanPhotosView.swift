@@ -42,28 +42,48 @@ struct ScanPhotosView: View {
                     .padding(.bottom, 20)
                 }
             } else {
-                ScrollView {
-                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
-                        ForEach(faceImages, id: \.self) { image in
-                            Button(action: {
-                                onImageSelected(image)
-                            }) {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 100, height: 100)
-                                    .clipped()
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(Color.black.opacity(0.3), lineWidth: 1)
-                                    )
-                                    .shadow(radius: 4)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                        }
+                VStack {
+                    HStack {
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(.white)
+                            .font(.system(size: 20, weight: .medium))
+
+                        Text("Select your ex from the photos below to review or delete all related memories.")
+                            .font(.system(size: 16))
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.leading)
                     }
                     .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.blue.opacity(0.85))
+                            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+                    )
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
+                            ForEach(faceImages, id: \.self) { image in
+                                Button(action: {
+                                    onImageSelected(image)
+                                }) {
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 100, height: 100)
+                                        .clipped()
+                                        .cornerRadius(12)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.black.opacity(0.3), lineWidth: 1)
+                                        )
+                                        .shadow(radius: 4)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                        }
+                        .padding()
+                    }
                 }
             }
         }
