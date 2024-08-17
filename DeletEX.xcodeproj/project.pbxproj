@@ -111,12 +111,20 @@
 			path = Success;
 			sourceTree = "<group>";
 		};
-		4D55C3522C70C06B004B73E8 /* CommonViews */ = {
+		4D55C3522C70C06B004B73E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */,
 			);
-			path = CommonViews;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4D55C3552C70D25C004B73E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4D4F63702C6EB8430097DC2F /* PhotoItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4DAB30A92C68E7C8002D037A /* Util */ = {
@@ -166,7 +174,8 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
-				4D55C3522C70C06B004B73E8 /* CommonViews */,
+				4D55C3552C70D25C004B73E8 /* Models */,
+				4D55C3522C70C06B004B73E8 /* Views */,
 				4D4F63722C6EBF3B0097DC2F /* Success */,
 				4D0E43932C6ACD0200ECB9D1 /* ReviewPhotos */,
 				4D0E43902C6ABC8500ECB9D1 /* PhotoLibraryAccess */,
@@ -177,7 +186,6 @@
 				4DFC5C382C38B7FD005B5823 /* ContentView.swift */,
 				4DFC5C3A2C38B801005B5823 /* Assets.xcassets */,
 				4DFC5C3C2C38B801005B5823 /* Preview Content */,
-				4D4F63702C6EB8430097DC2F /* PhotoItem.swift */,
 			);
 			path = DeletEX;
 			sourceTree = "<group>";
