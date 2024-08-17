@@ -11,6 +11,8 @@ import SwiftUI
 struct ReviewPhotosView: View {
     let personImages: [PhotoItem]
     @State private var selectedImages: Set<Int> = []
+    @State private var showDeletionSuccessView = false
+    @State private var deletionError = false
 
     var body: some View {
         VStack {
@@ -22,9 +24,11 @@ struct ReviewPhotosView: View {
                 }
                 .padding()
             }
-
+            if deletionError {
+                DeletionErrorBannerView()
+                    .padding(.horizontal)
+            }
             Divider()
-
             HStack {
                 Text("\(selectedImages.count) photos selected")
                     .font(.headline)
@@ -59,6 +63,9 @@ struct ReviewPhotosView: View {
                     Text(selectedImages.count == personImages.count ? "Deselect All" : "Select All")
                 }
             }
+        }
+        .navigate(isActive: $showDeletionSuccessView) {
+            SuccessView()
         }
     }
 
@@ -106,7 +113,29 @@ struct ReviewPhotosView: View {
     }
 
     private func deleteSelectedImages() {
-        // TODO: Add delete logic
+        deletionError = false
+        let assetsToDelete = personImages.map { $0.phAsset }
+        PHPhotoLibrary.shared().performChanges({
+            PHAssetChangeRequest.deleteAssets(assetsToDelete as NSFastEnumeration)
+        }) { success, error in
+            if success {
+                let remainingAssets = assetsToDelete.filter { asset in
+                    let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: [asset.localIdentifier], options: nil)
+                    return fetchResult.count > 0
+                }
+
+                if remainingAssets.isEmpty {
+                    print("Successfully deleted all the assets.")
+                    showDeletionSuccessView = true
+                } else {
+                    print("Some assets could not be deleted.")
+                    deletionError = true
+                }
+            } else {
+                print("Error deleting assets: \(error?.localizedDescription ?? "Unknown error")")
+                deletionError = true
+            }
+        }
     }
 }
 

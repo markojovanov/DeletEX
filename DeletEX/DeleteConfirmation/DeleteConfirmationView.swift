@@ -47,7 +47,7 @@ struct DeleteConfirmationView: View {
             }
             .padding(.horizontal, 30)
             if deletionError {
-                deletionErrorView
+                DeletionErrorBannerView()
             }
             HStack(spacing: 20) {
                 Button(action: {
@@ -88,36 +88,6 @@ struct DeleteConfirmationView: View {
         .navigate(isActive: $showDeletionSuccessView) {
             SuccessView()
         }
-    }
-
-    private var deletionErrorView: some View {
-        VStack(alignment: .center, spacing: 10) {
-            Text("Oops! Something went wrong.")
-                .font(.headline)
-                .foregroundColor(.red)
-                .padding(.top, 10)
-
-            Text("We encountered an issue while trying to delete some of your photos.")
-                .font(.body)
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.center)
-
-            Text("Please try again later or review the photos manually to ensure everything is deleted as expected.")
-                .font(.footnote)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.bottom, 20)
-        }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color(UIColor.systemRed.withAlphaComponent(0.1))) // Light red background
-                .shadow(color: Color.red.opacity(0.3), radius: 5, x: 0, y: 2)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.red, lineWidth: 1)
-        )
     }
 
     private func onDelete() {
