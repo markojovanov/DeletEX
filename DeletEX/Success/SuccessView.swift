@@ -34,6 +34,7 @@ struct SuccessView: View {
             startPoint: .top, endPoint: .bottom
         )
         .edgesIgnoringSafeArea(.all))
+        .navigationBarBackButtonHidden(true)
     }
 }
 
