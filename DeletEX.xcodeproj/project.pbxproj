@@ -12,6 +12,8 @@
 		4D4F63712C6EB8430097DC2F /* PhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F63702C6EB8430097DC2F /* PhotoItem.swift */; };
 		4D4F63742C6EBF490097DC2F /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F63732C6EBF490097DC2F /* SuccessView.swift */; };
 		4D55C3542C70C07D004B73E8 /* DeletionErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */; };
+		4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */; };
+		4D55C35A2C70EAF7004B73E8 /* FaceDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */; };
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
 		4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */; };
 		4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */; };
@@ -47,6 +49,8 @@
 		4D4F63702C6EB8430097DC2F /* PhotoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoItem.swift; sourceTree = "<group>"; };
 		4D4F63732C6EBF490097DC2F /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionErrorBannerView.swift; sourceTree = "<group>"; };
+		4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosViewModel.swift; sourceTree = "<group>"; };
+		4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectionService.swift; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
 		4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationView.swift; sourceTree = "<group>"; };
@@ -127,6 +131,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		4D55C3582C70EAE2004B73E8 /* FaceDetection */ = {
+			isa = PBXGroup;
+			children = (
+				4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */,
+			);
+			path = FaceDetection;
+			sourceTree = "<group>";
+		};
 		4DAB30A92C68E7C8002D037A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */,
+				4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */,
 			);
 			path = ScanPhotos;
 			sourceTree = "<group>";
@@ -174,6 +187,7 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
+				4D55C3582C70EAE2004B73E8 /* FaceDetection */,
 				4D55C3552C70D25C004B73E8 /* Models */,
 				4D55C3522C70C06B004B73E8 /* Views */,
 				4D4F63722C6EBF3B0097DC2F /* Success */,
@@ -345,6 +359,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D55C35A2C70EAF7004B73E8 /* FaceDetectionService.swift in Sources */,
+				4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */,
 				4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */,
 				4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */,
 				4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */,
