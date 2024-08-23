@@ -9,33 +9,34 @@ import Photos
 import SwiftUI
 
 struct ReviewPhotosView: View {
-    let personImages: [PhotoItem]
-    @State private var selectedImages: Set<Int> = []
-    @State private var showDeletionSuccessView = false
-    @State private var deletionError = false
+    @StateObject private var viewModel: ReviewPhotosViewModel
+
+    init(personImages: [PhotoItem]) {
+        _viewModel = StateObject(wrappedValue: ReviewPhotosViewModel(personImages: personImages))
+    }
 
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
-                    ForEach(personImages.indices, id: \.self) { index in
+                    ForEach(viewModel.personImages.indices, id: \.self) { index in
                         imageView(for: index)
                     }
                 }
                 .padding()
             }
-            if deletionError {
-                DeletionErrorBannerView(isVisible: $deletionError)
+            if viewModel.deletionError {
+                DeletionErrorBannerView(isVisible: $viewModel.deletionError)
                     .padding(.horizontal)
             }
             Divider()
             HStack {
-                Text("\(selectedImages.count) photos selected")
+                Text("\(viewModel.selectedImages.count) photos selected")
                     .font(.headline)
                     .foregroundColor(.primary)
-                    .accessibilityLabel("\(selectedImages.count) photos selected")
+                    .accessibilityLabel("\(viewModel.selectedImages.count) photos selected")
                 Spacer()
-                Button(action: deleteSelectedImages) {
+                Button(action: viewModel.deleteSelectedImages) {
                     Text("Delete photos")
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -54,23 +55,23 @@ struct ReviewPhotosView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    if selectedImages.count == personImages.count {
-                        deselectAllImages()
+                    if viewModel.selectedImages.count == viewModel.personImages.count {
+                        viewModel.deselectAllImages()
                     } else {
-                        selectAllImages()
+                        viewModel.selectAllImages()
                     }
                 } label: {
-                    Text(selectedImages.count == personImages.count ? "Deselect All" : "Select All")
+                    Text(viewModel.selectedImages.count == viewModel.personImages.count ? "Deselect All" : "Select All")
                 }
             }
         }
-        .navigate(isActive: $showDeletionSuccessView) {
+        .navigate(isActive: $viewModel.showDeletionSuccessView) {
             SuccessView()
         }
     }
 
     private func imageView(for index: Int) -> some View {
-        Image(uiImage: personImages[index].image)
+        Image(uiImage: viewModel.personImages[index].image)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 100, height: 100)
@@ -79,10 +80,10 @@ struct ReviewPhotosView: View {
             .overlay(
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(selectedImages.contains(index) ? Color.blue.opacity(0.4) : Color.clear)
+                        .fill(viewModel.selectedImages.contains(index) ? Color.blue.opacity(0.4) : Color.clear)
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(selectedImages.contains(index) ? Color.blue : Color.clear, lineWidth: 2)
-                    if selectedImages.contains(index) {
+                        .stroke(viewModel.selectedImages.contains(index) ? Color.blue : Color.clear, lineWidth: 2)
+                    if viewModel.selectedImages.contains(index) {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundColor(.white)
                     }
@@ -90,52 +91,10 @@ struct ReviewPhotosView: View {
             )
             .onTapGesture {
                 withAnimation {
-                    toggleSelection(for: index)
+                    viewModel.toggleSelection(for: index)
                 }
             }
             .padding()
-    }
-
-    private func toggleSelection(for index: Int) {
-        if selectedImages.contains(index) {
-            selectedImages.remove(index)
-        } else {
-            selectedImages.insert(index)
-        }
-    }
-
-    private func selectAllImages() {
-        selectedImages = Set(personImages.indices)
-    }
-
-    private func deselectAllImages() {
-        selectedImages.removeAll()
-    }
-
-    private func deleteSelectedImages() {
-        deletionError = false
-        let assetsToDelete = personImages.map { $0.phAsset }
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.deleteAssets(assetsToDelete as NSFastEnumeration)
-        }) { success, error in
-            if success {
-                let remainingAssets = assetsToDelete.filter { asset in
-                    let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: [asset.localIdentifier], options: nil)
-                    return fetchResult.count > 0
-                }
-
-                if remainingAssets.isEmpty {
-                    print("Successfully deleted all the assets.")
-                    showDeletionSuccessView = true
-                } else {
-                    print("Some assets could not be deleted.")
-                    deletionError = true
-                }
-            } else {
-                print("Error deleting assets: \(error?.localizedDescription ?? "Unknown error")")
-                deletionError = true
-            }
-        }
     }
 }
 
