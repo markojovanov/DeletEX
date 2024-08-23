@@ -5,13 +5,10 @@
 //  Created by Marko Jovanov on 12.8.24.
 //
 
-import Photos
 import SwiftUI
 
 struct PhotoLibraryAccessView: View {
-    @State private var showNextView = false
-    @State private var showAlert = false
-    @State private var hasRequestedAccessBefore = false
+    @StateObject private var viewModel = PhotoLibraryAccssViewModel()
     @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
@@ -31,7 +28,7 @@ struct PhotoLibraryAccessView: View {
                 .padding(.horizontal)
                 .foregroundColor(.secondary)
 
-            Button(action: requestPhotoLibraryAccess) {
+            Button(action: viewModel.requestPhotoLibraryAccess) {
                 HStack {
                     Image(systemName: "lock.open.fill")
                         .font(.headline)
@@ -55,54 +52,21 @@ struct PhotoLibraryAccessView: View {
         .padding()
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .alert(isPresented: $showAlert) {
+        .alert(isPresented: $viewModel.showAlert) {
             Alert(
                 title: Text("Access Denied"),
                 message: Text("Without photo library access, the app cannot process your images. You can enable access in Settings."),
-                primaryButton: .default(Text("Open Settings"), action: openAppSettings),
+                primaryButton: .default(Text("Open Settings"), action: viewModel.openAppSettings),
                 secondaryButton: .cancel(Text("Cancel"))
             )
         }
-        .navigate(isActive: $showNextView) {
+        .navigate(isActive: $viewModel.showNextView) {
             ScanPhotosView()
         }
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
-                checkAuthorizationStatus()
+                viewModel.checkAuthorizationStatus()
             }
-        }
-    }
-
-    private func requestPhotoLibraryAccess() {
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
-            DispatchQueue.main.async {
-                hasRequestedAccessBefore = true
-                handleAuthorizationStatus(status)
-            }
-        }
-    }
-
-    private func checkAuthorizationStatus() {
-        let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
-        handleAuthorizationStatus(status)
-    }
-
-    private func handleAuthorizationStatus(_ status: PHAuthorizationStatus) {
-        if status == .authorized {
-            showNextView = true
-        } else {
-            if hasRequestedAccessBefore {
-                showAlert = true
-            }
-        }
-    }
-
-    private func openAppSettings() {
-        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
-            return
-        }
-        if UIApplication.shared.canOpenURL(settingsURL) {
-            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
         }
     }
 }
