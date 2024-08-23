@@ -10,11 +10,11 @@ import Photos
 import Vision
 
 protocol FaceDetectionService {
-    func fetchPhotos(completion: @escaping ([PhotoItem]) -> Void)
+    func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void)
 }
 
 class FaceDetectionServiceImpl: FaceDetectionService {
-    func fetchPhotos(completion: @escaping ([PhotoItem]) -> Void) {
+    func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void) {
         let fetchOptions = PHFetchOptions()
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
         let imageManager = PHImageManager.default()

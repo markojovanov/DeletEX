@@ -8,23 +8,34 @@
 import SwiftUI
 
 struct DeletionErrorBannerView: View {
+    @Binding var isVisible: Bool
+
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
+        VStack(alignment: .center) {
+            HStack {
+                Spacer()
+                Button(action: { isVisible = false }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.red)
+                        .padding(.horizontal, 5)
+                }
+            }
+
             Text("Oops! Something went wrong.")
                 .font(.headline)
                 .foregroundColor(.red)
-                .padding(.top, 10)
+                .padding(.bottom, 10)
 
             Text("We encountered an issue while trying to delete some of your photos.")
                 .font(.body)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
+                .padding(.bottom, 6)
 
             Text("Please try again later or review the photos manually to ensure everything is deleted as expected.")
                 .font(.footnote)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 20)
         }
         .padding()
         .background(
@@ -40,5 +51,5 @@ struct DeletionErrorBannerView: View {
 }
 
 #Preview {
-    DeletionErrorBannerView()
+    DeletionErrorBannerView(isVisible: .constant(false))
 }

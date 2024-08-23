@@ -25,7 +25,7 @@ struct ReviewPhotosView: View {
                 .padding()
             }
             if deletionError {
-                DeletionErrorBannerView()
+                DeletionErrorBannerView(isVisible: $deletionError)
                     .padding(.horizontal)
             }
             Divider()

@@ -9,14 +9,15 @@ import Photos
 import SwiftUI
 
 struct DeleteConfirmationView: View {
-    var personImages: [PhotoItem]
-    @State private var showReviewView = false
-    @State private var showDeletionSuccessView = false
-    @State private var deletionError = false
+    @StateObject private var viewModel: DeleteConfirmationViewModel
+
+    init(personImages: [PhotoItem]) {
+        _viewModel = StateObject(wrappedValue: DeleteConfirmationViewModel(personImages: personImages))
+    }
 
     var body: some View {
         VStack(spacing: 30) {
-            if let personImage = personImages.first {
+            if let personImage = viewModel.personImages.first {
                 Image(uiImage: personImage.image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -28,7 +29,7 @@ struct DeleteConfirmationView: View {
                     .shadow(radius: 10)
             }
 
-            Text("You've selected \(personImages.count) photos.")
+            Text("You've selected \(viewModel.personImages.count) photos.")
                 .font(.title2)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
@@ -46,12 +47,12 @@ struct DeleteConfirmationView: View {
                     .foregroundColor(.secondary)
             }
             .padding(.horizontal, 30)
-            if deletionError {
-                DeletionErrorBannerView()
+            if viewModel.deletionError {
+                DeletionErrorBannerView(isVisible: $viewModel.deletionError)
             }
             HStack(spacing: 20) {
                 Button(action: {
-                    onDelete()
+                    viewModel.onDelete()
                 }) {
                     Text("Delete")
                         .font(.headline)
@@ -63,7 +64,7 @@ struct DeleteConfirmationView: View {
                 }
 
                 Button(action: {
-                    onReview()
+                    viewModel.onReview()
                 }) {
                     Text("Review")
                         .font(.headline)
@@ -82,42 +83,12 @@ struct DeleteConfirmationView: View {
                 .shadow(radius: 10)
         )
         .padding(.horizontal, 20)
-        .navigate(isActive: $showReviewView) {
-            ReviewPhotosView(personImages: personImages)
+        .navigate(isActive: $viewModel.showReviewView) {
+            ReviewPhotosView(personImages: viewModel.personImages)
         }
-        .navigate(isActive: $showDeletionSuccessView) {
+        .navigate(isActive: $viewModel.showDeletionSuccessView) {
             SuccessView()
         }
-    }
-
-    private func onDelete() {
-        deletionError = false
-        let assetsToDelete = personImages.map { $0.phAsset }
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.deleteAssets(assetsToDelete as NSFastEnumeration)
-        }) { success, error in
-            if success {
-                let remainingAssets = assetsToDelete.filter { asset in
-                    let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: [asset.localIdentifier], options: nil)
-                    return fetchResult.count > 0
-                }
-
-                if remainingAssets.isEmpty {
-                    print("Successfully deleted all the assets.")
-                    showDeletionSuccessView = true
-                } else {
-                    print("Some assets could not be deleted.")
-                    deletionError = true
-                }
-            } else {
-                print("Error deleting assets: \(error?.localizedDescription ?? "Unknown error")")
-                deletionError = true
-            }
-        }
-    }
-
-    private func onReview() {
-        showReviewView = true
     }
 }
 
