@@ -7,8 +7,11 @@
 
 import Photos
 import UIKit
+import Vision
 
-struct PhotoItem: Hashable {
+struct PhotoItem: Identifiable, Hashable {
+    let id = UUID()
     let image: UIImage
     let phAsset: PHAsset
+    let faceObservation: VNFaceObservation
 }

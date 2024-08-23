@@ -23,7 +23,7 @@ struct ContentView: View {
                     PhotoLibraryAccessView()
                 }
                 .navigate(isActive: $showScanPhotosView) {
-                    ScanPhotosView()
+                    TestFaceObservation()
                 }
         }
     }

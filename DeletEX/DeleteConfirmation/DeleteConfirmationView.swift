@@ -7,6 +7,7 @@
 
 import Photos
 import SwiftUI
+import Vision
 
 struct DeleteConfirmationView: View {
     var personImages: [PhotoItem]
@@ -121,6 +122,3 @@ struct DeleteConfirmationView: View {
     }
 }
 
-#Preview {
-    DeleteConfirmationView(personImages: [PhotoItem(image: UIImage(), phAsset: PHAsset())])
-}

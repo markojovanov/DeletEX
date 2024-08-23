@@ -27,7 +27,7 @@ class ScanPhotosViewModel: ObservableObject {
     func scanPhotosForFaces() {
         guard !isLoading else { return }
         isLoading = true
-        faceDetectionService.fetchPhotos { [weak self] photoItems in
+        faceDetectionService.fetchFacePhotos { [weak self] photoItems in
             guard let self = self else { return }
             // TODO: Sort picture by people
             self.faceImages = photoItems

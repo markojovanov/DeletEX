@@ -7,6 +7,7 @@
 
 import Photos
 import SwiftUI
+import Vision
 
 struct ReviewPhotosView: View {
     let personImages: [PhotoItem]
@@ -137,8 +138,4 @@ struct ReviewPhotosView: View {
             }
         }
     }
-}
-
-#Preview {
-    ReviewPhotosView(personImages: [PhotoItem(image: UIImage(), phAsset: PHAsset())])
 }
