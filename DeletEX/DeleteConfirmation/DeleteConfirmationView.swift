@@ -18,7 +18,7 @@ struct DeleteConfirmationView: View {
     var body: some View {
         VStack(spacing: 30) {
             if let personImage = viewModel.personImages.first {
-                Image(uiImage: personImage.image)
+                Image(uiImage: personImage.croppedFaceImage)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 120, height: 120)
@@ -93,5 +93,5 @@ struct DeleteConfirmationView: View {
 }
 
 #Preview {
-    DeleteConfirmationView(personImages: [PhotoItem(image: UIImage(), phAsset: PHAsset())])
+    DeleteConfirmationView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset())])
 }

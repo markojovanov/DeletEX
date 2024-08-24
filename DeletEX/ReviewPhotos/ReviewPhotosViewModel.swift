@@ -11,6 +11,7 @@ import Photos
 class ReviewPhotosViewModel: ObservableObject {
     @Published var showDeletionSuccessView = false
     @Published var deletionError = false
+    @Published var noImagesSelectedError = false
     @Published var selectedImages: Set<Int> = []
     let personImages: [PhotoItem]
 
@@ -35,6 +36,10 @@ class ReviewPhotosViewModel: ObservableObject {
     }
 
     func deleteSelectedImages() {
+        if selectedImages.isEmpty {
+            noImagesSelectedError = true
+            return
+        }
         deletionError = false
         let assetsToDelete = personImages.enumerated()
             .filter { index, _ in selectedImages.contains(index) }

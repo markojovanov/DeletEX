@@ -10,5 +10,6 @@ import UIKit
 
 struct PhotoItem: Hashable {
     let image: UIImage
+    let croppedFaceImage: UIImage
     let phAsset: PHAsset
 }

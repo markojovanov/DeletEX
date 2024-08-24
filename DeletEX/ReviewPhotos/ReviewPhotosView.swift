@@ -29,6 +29,9 @@ struct ReviewPhotosView: View {
                 DeletionErrorBannerView(isVisible: $viewModel.deletionError)
                     .padding(.horizontal)
             }
+            if viewModel.noImagesSelectedError {
+                noImagesSelectedBannerView
+            }
             Divider()
             HStack {
                 Text("\(viewModel.selectedImages.count) photos selected")
@@ -96,8 +99,48 @@ struct ReviewPhotosView: View {
             }
             .padding()
     }
+
+    private var noImagesSelectedBannerView: some View {
+        VStack(alignment: .center) {
+            HStack {
+                Spacer()
+                Button(action: { viewModel.noImagesSelectedError = false }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.orange)
+                        .padding(.horizontal, 5)
+                }
+            }
+
+            Text("No Images Selected")
+                .font(.headline)
+                .foregroundColor(.orange)
+                .padding(.bottom, 10)
+
+            Text("You haven't selected any images.")
+                .font(.body)
+                .foregroundColor(.primary)
+                .multilineTextAlignment(.center)
+                .padding(.bottom, 6)
+
+            Text("Please select the images you want to review or delete.")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(UIColor.systemOrange.withAlphaComponent(0.1)))
+                .shadow(color: Color.orange.opacity(0.3), radius: 5, x: 0, y: 2)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.orange, lineWidth: 1)
+        )
+        .padding(.horizontal)
+    }
 }
 
 #Preview {
-    ReviewPhotosView(personImages: [PhotoItem(image: UIImage(), phAsset: PHAsset())])
+    ReviewPhotosView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset())])
 }

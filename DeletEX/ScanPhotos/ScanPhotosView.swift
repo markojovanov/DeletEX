@@ -36,7 +36,7 @@ struct ScanPhotosView: View {
         }
         .navigate(isActive: $viewModel.showSelectedImageView) {
             if let selectedImage = viewModel.selectedImage {
-                DeleteConfirmationView(personImages: [selectedImage])
+                DeleteConfirmationView(personImages: selectedImage)
             }
         }
     }
@@ -73,21 +73,23 @@ struct ScanPhotosView: View {
             infoBannerView
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
-                    ForEach(viewModel.faceImages, id: \.self) { photoItem in
+                    ForEach(viewModel.faceImages.indices, id: \.self) { index in
                         Button(action: {
-                            viewModel.onImageSelected(photoItem)
+                            viewModel.onImageSelected(viewModel.faceImages[index])
                         }) {
-                            Image(uiImage: photoItem.image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)
-                                .clipped()
-                                .cornerRadius(12)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.black.opacity(0.3), lineWidth: 1)
-                                )
-                                .shadow(radius: 4)
+                            if let image = viewModel.faceImages[index].first?.croppedFaceImage {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
+                                    .clipped()
+                                    .cornerRadius(12)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.black.opacity(0.3), lineWidth: 1)
+                                    )
+                                    .shadow(radius: 4)
+                            }
                         }
                         .buttonStyle(PlainButtonStyle())
                     }

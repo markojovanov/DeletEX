@@ -8,9 +8,9 @@
 import Foundation
 
 class ScanPhotosViewModel: ObservableObject {
-    @Published var faceImages: [PhotoItem] = []
+    @Published var faceImages: [[PhotoItem]] = [[]]
     @Published var isLoading = false
-    @Published var selectedImage: PhotoItem? = nil
+    @Published var selectedImage: [PhotoItem]? = nil
     @Published var showSelectedImageView = false
 
     private let faceDetectionService: FaceDetectionService
@@ -19,7 +19,7 @@ class ScanPhotosViewModel: ObservableObject {
         self.faceDetectionService = faceDetectionService
     }
 
-    func onImageSelected(_ photoItem: PhotoItem) {
+    func onImageSelected(_ photoItem: [PhotoItem]) {
         selectedImage = photoItem
         showSelectedImageView = true
     }
@@ -27,11 +27,13 @@ class ScanPhotosViewModel: ObservableObject {
     func scanPhotosForFaces() {
         guard !isLoading else { return }
         isLoading = true
-        faceDetectionService.fetchPhotos { [weak self] photoItems in
+        faceDetectionService.fetchFacePhotos { [weak self] photoItems in
             guard let self = self else { return }
-            // TODO: Sort picture by people
-            self.faceImages = photoItems
-            self.isLoading = false
+            faceDetectionService.groupPhotosByFace(faceImages: photoItems) { [weak self] sortedImages in
+                guard let self else { return }
+                self.faceImages = sortedImages
+                self.isLoading = false
+            }
         }
     }
 
