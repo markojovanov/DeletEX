@@ -17,6 +17,8 @@
 		4D55C3542C70C07D004B73E8 /* DeletionErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */; };
 		4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */; };
 		4D55C35A2C70EAF7004B73E8 /* FaceDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */; };
+		4D58B7A22C9C9AC4004B5DB3 /* FaceNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */; };
+		4DA8A0942C9C9F7E0013367E /* facenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 4DA8A0932C9C9F7E0013367E /* facenet.tflite */; };
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
 		4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */; };
 		4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */; };
@@ -24,29 +26,11 @@
 		4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C382C38B7FD005B5823 /* ContentView.swift */; };
 		4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3A2C38B801005B5823 /* Assets.xcassets */; };
 		4DFC5C3E2C38B801005B5823 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3D2C38B801005B5823 /* Preview Assets.xcassets */; };
-		4DFC5C482C38B802005B5823 /* DeletEXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C472C38B802005B5823 /* DeletEXTests.swift */; };
-		4DFC5C522C38B802005B5823 /* DeletEXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C512C38B802005B5823 /* DeletEXUITests.swift */; };
-		4DFC5C542C38B802005B5823 /* DeletEXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C532C38B802005B5823 /* DeletEXUITestsLaunchTests.swift */; };
+		B47E020A6AC5984EA98C08DC /* Pods_DeletEX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF85046C95F7FAAAE1B2CFB2 /* Pods_DeletEX.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4DFC5C442C38B801005B5823 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4DFC5C2B2C38B7FD005B5823 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4DFC5C322C38B7FD005B5823;
-			remoteInfo = DeletEX;
-		};
-		4DFC5C4E2C38B802005B5823 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4DFC5C2B2C38B7FD005B5823 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4DFC5C322C38B7FD005B5823;
-			remoteInfo = DeletEX;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		34649E69FA2A03C6C42B31F4 /* Pods-DeletEX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeletEX.release.xcconfig"; path = "Target Support Files/Pods-DeletEX/Pods-DeletEX.release.xcconfig"; sourceTree = "<group>"; };
 		4D0E43912C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAccessView.swift; sourceTree = "<group>"; };
 		4D0E43942C6ACD1100ECB9D1 /* ReviewPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPhotosView.swift; sourceTree = "<group>"; };
 		4D1864442C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAccssViewModel.swift; sourceTree = "<group>"; };
@@ -57,6 +41,8 @@
 		4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionErrorBannerView.swift; sourceTree = "<group>"; };
 		4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosViewModel.swift; sourceTree = "<group>"; };
 		4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectionService.swift; sourceTree = "<group>"; };
+		4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNet.swift; sourceTree = "<group>"; };
+		4DA8A0932C9C9F7E0013367E /* facenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = facenet.tflite; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
 		4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationView.swift; sourceTree = "<group>"; };
@@ -65,11 +51,8 @@
 		4DFC5C382C38B7FD005B5823 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4DFC5C3A2C38B801005B5823 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DFC5C3D2C38B801005B5823 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4DFC5C432C38B801005B5823 /* DeletEXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeletEXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DFC5C472C38B802005B5823 /* DeletEXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXTests.swift; sourceTree = "<group>"; };
-		4DFC5C4D2C38B802005B5823 /* DeletEXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeletEXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DFC5C512C38B802005B5823 /* DeletEXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXUITests.swift; sourceTree = "<group>"; };
-		4DFC5C532C38B802005B5823 /* DeletEXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6F24408C3A2E804D52C2CB5D /* Pods-DeletEX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeletEX.debug.xcconfig"; path = "Target Support Files/Pods-DeletEX/Pods-DeletEX.debug.xcconfig"; sourceTree = "<group>"; };
+		CF85046C95F7FAAAE1B2CFB2 /* Pods_DeletEX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeletEX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,26 +60,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DFC5C402C38B801005B5823 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DFC5C4A2C38B802005B5823 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				B47E020A6AC5984EA98C08DC /* Pods_DeletEX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		078DA36CA6A52D97CD23A171 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F24408C3A2E804D52C2CB5D /* Pods-DeletEX.debug.xcconfig */,
+				34649E69FA2A03C6C42B31F4 /* Pods-DeletEX.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4D0E43902C6ABC8500ECB9D1 /* PhotoLibraryAccess */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +121,9 @@
 		4D55C3582C70EAE2004B73E8 /* FaceDetection */ = {
 			isa = PBXGroup;
 			children = (
+				4DA8A0932C9C9F7E0013367E /* facenet.tflite */,
 				4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */,
+				4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */,
 			);
 			path = FaceDetection;
 			sourceTree = "<group>";
@@ -177,9 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				4DFC5C352C38B7FD005B5823 /* DeletEX */,
-				4DFC5C462C38B802005B5823 /* DeletEXTests */,
-				4DFC5C502C38B802005B5823 /* DeletEXUITests */,
 				4DFC5C342C38B7FD005B5823 /* Products */,
+				078DA36CA6A52D97CD23A171 /* Pods */,
+				50E8AFADBAFF14DBC0DA4249 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,8 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				4DFC5C332C38B7FD005B5823 /* DeletEX.app */,
-				4DFC5C432C38B801005B5823 /* DeletEXTests.xctest */,
-				4DFC5C4D2C38B802005B5823 /* DeletEXUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,21 +200,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4DFC5C462C38B802005B5823 /* DeletEXTests */ = {
+		50E8AFADBAFF14DBC0DA4249 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DFC5C472C38B802005B5823 /* DeletEXTests.swift */,
+				CF85046C95F7FAAAE1B2CFB2 /* Pods_DeletEX.framework */,
 			);
-			path = DeletEXTests;
-			sourceTree = "<group>";
-		};
-		4DFC5C502C38B802005B5823 /* DeletEXUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4DFC5C512C38B802005B5823 /* DeletEXUITests.swift */,
-				4DFC5C532C38B802005B5823 /* DeletEXUITestsLaunchTests.swift */,
-			);
-			path = DeletEXUITests;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DFC5C572C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEX" */;
 			buildPhases = (
+				A698F152A72A8CFC8641415E /* [CP] Check Pods Manifest.lock */,
 				4DFC5C2F2C38B7FD005B5823 /* Sources */,
 				4DFC5C302C38B7FD005B5823 /* Frameworks */,
 				4DFC5C312C38B7FD005B5823 /* Resources */,
+				0E63E4848A3F2F62C7842A86 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,42 +229,6 @@
 			productName = DeletEX;
 			productReference = 4DFC5C332C38B7FD005B5823 /* DeletEX.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4DFC5C422C38B801005B5823 /* DeletEXTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4DFC5C5A2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXTests" */;
-			buildPhases = (
-				4DFC5C3F2C38B801005B5823 /* Sources */,
-				4DFC5C402C38B801005B5823 /* Frameworks */,
-				4DFC5C412C38B801005B5823 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4DFC5C452C38B801005B5823 /* PBXTargetDependency */,
-			);
-			name = DeletEXTests;
-			productName = DeletEXTests;
-			productReference = 4DFC5C432C38B801005B5823 /* DeletEXTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4DFC5C4C2C38B802005B5823 /* DeletEXUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4DFC5C5D2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXUITests" */;
-			buildPhases = (
-				4DFC5C492C38B802005B5823 /* Sources */,
-				4DFC5C4A2C38B802005B5823 /* Frameworks */,
-				4DFC5C4B2C38B802005B5823 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4DFC5C4F2C38B802005B5823 /* PBXTargetDependency */,
-			);
-			name = DeletEXUITests;
-			productName = DeletEXUITests;
-			productReference = 4DFC5C4D2C38B802005B5823 /* DeletEXUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -306,14 +242,6 @@
 				TargetAttributes = {
 					4DFC5C322C38B7FD005B5823 = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					4DFC5C422C38B801005B5823 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 4DFC5C322C38B7FD005B5823;
-					};
-					4DFC5C4C2C38B802005B5823 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = 4DFC5C322C38B7FD005B5823;
 					};
 				};
 			};
@@ -331,8 +259,6 @@
 			projectRoot = "";
 			targets = (
 				4DFC5C322C38B7FD005B5823 /* DeletEX */,
-				4DFC5C422C38B801005B5823 /* DeletEXTests */,
-				4DFC5C4C2C38B802005B5823 /* DeletEXUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -342,26 +268,53 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA8A0942C9C9F7E0013367E /* facenet.tflite in Resources */,
 				4DFC5C3E2C38B801005B5823 /* Preview Assets.xcassets in Resources */,
 				4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DFC5C412C38B801005B5823 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DFC5C4B2C38B802005B5823 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E63E4848A3F2F62C7842A86 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#\"${PODS_ROOT}/Target Support Files/Pods-DeletEX/Pods-DeletEX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A698F152A72A8CFC8641415E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DeletEX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4DFC5C2F2C38B7FD005B5823 /* Sources */ = {
@@ -382,41 +335,12 @@
 				4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */,
 				4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */,
 				4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */,
+				4D58B7A22C9C9AC4004B5DB3 /* FaceNet.swift in Sources */,
 				4D0E43922C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DFC5C3F2C38B801005B5823 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4DFC5C482C38B802005B5823 /* DeletEXTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DFC5C492C38B802005B5823 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4DFC5C542C38B802005B5823 /* DeletEXUITestsLaunchTests.swift in Sources */,
-				4DFC5C522C38B802005B5823 /* DeletEXUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4DFC5C452C38B801005B5823 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4DFC5C322C38B7FD005B5823 /* DeletEX */;
-			targetProxy = 4DFC5C442C38B801005B5823 /* PBXContainerItemProxy */;
-		};
-		4DFC5C4F2C38B802005B5823 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4DFC5C322C38B7FD005B5823 /* DeletEX */;
-			targetProxy = 4DFC5C4E2C38B802005B5823 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4DFC5C552C38B802005B5823 /* Debug */ = {
@@ -471,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -528,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -540,13 +464,15 @@
 		};
 		4DFC5C582C38B802005B5823 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F24408C3A2E804D52C2CB5D /* Pods-DeletEX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeletEX/Preview Content\"";
-				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				DEVELOPMENT_TEAM = R7V669986H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage, and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
@@ -555,6 +481,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -562,6 +489,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -570,13 +498,15 @@
 		};
 		4DFC5C592C38B802005B5823 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34649E69FA2A03C6C42B31F4 /* Pods-DeletEX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DeletEX/Preview Content\"";
-				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
+				DEVELOPMENT_TEAM = R7V669986H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage, and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
@@ -585,6 +515,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,85 +523,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		4DFC5C5B2C38B802005B5823 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeletEX.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeletEX";
-			};
-			name = Debug;
-		};
-		4DFC5C5C2C38B802005B5823 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeletEX.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DeletEX";
-			};
-			name = Release;
-		};
-		4DFC5C5E2C38B802005B5823 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DeletEX;
-			};
-			name = Debug;
-		};
-		4DFC5C5F2C38B802005B5823 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 28C2T5Z9DJ;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEXUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DeletEX;
 			};
 			name = Release;
 		};
@@ -691,24 +547,6 @@
 			buildConfigurations = (
 				4DFC5C582C38B802005B5823 /* Debug */,
 				4DFC5C592C38B802005B5823 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4DFC5C5A2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4DFC5C5B2C38B802005B5823 /* Debug */,
-				4DFC5C5C2C38B802005B5823 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4DFC5C5D2C38B802005B5823 /* Build configuration list for PBXNativeTarget "DeletEXUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4DFC5C5E2C38B802005B5823 /* Debug */,
-				4DFC5C5F2C38B802005B5823 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

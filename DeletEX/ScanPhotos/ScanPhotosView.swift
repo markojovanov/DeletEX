@@ -35,9 +35,7 @@ struct ScanPhotosView: View {
             }
         }
         .navigate(isActive: $viewModel.showSelectedImageView) {
-            if let selectedImage = viewModel.selectedImage {
-                DeleteConfirmationView(personImages: selectedImage)
-            }
+            DeleteConfirmationView(personImages: viewModel.selectedPersonImages)
         }
     }
 
@@ -77,19 +75,17 @@ struct ScanPhotosView: View {
                         Button(action: {
                             viewModel.onImageSelected(viewModel.faceImages[index])
                         }) {
-                            if let image = viewModel.faceImages[index].first?.croppedFaceImage {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 100, height: 100)
-                                    .clipped()
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(Color.black.opacity(0.3), lineWidth: 1)
-                                    )
-                                    .shadow(radius: 4)
-                            }
+                            Image(uiImage: viewModel.faceImages[index].croppedFaceImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 100, height: 100)
+                                .clipped()
+                                .cornerRadius(12)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.black.opacity(0.3), lineWidth: 1)
+                                )
+                                .shadow(radius: 4)
                         }
                         .buttonStyle(PlainButtonStyle())
                     }

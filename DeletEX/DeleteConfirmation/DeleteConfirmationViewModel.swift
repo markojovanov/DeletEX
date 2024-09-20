@@ -19,29 +19,31 @@ class DeleteConfirmationViewModel: ObservableObject {
     }
 
     func onDelete() {
-        deletionError = false
-        let assetsToDelete = personImages.map { $0.phAsset }
-        PHPhotoLibrary.shared().performChanges({
-            PHAssetChangeRequest.deleteAssets(assetsToDelete as NSFastEnumeration)
-        }) { success, error in
-            if success {
-                let remainingAssets = assetsToDelete.filter { asset in
-                    let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: [asset.localIdentifier], options: nil)
-                    return fetchResult.count > 0
-                }
-
-                if remainingAssets.isEmpty {
-                    print("Successfully deleted all the assets.")
-                    self.showDeletionSuccessView = true
-                } else {
-                    print("Some assets could not be deleted.")
-                    self.deletionError = true
-                }
-            } else {
-                print("Error deleting assets: \(error?.localizedDescription ?? "Unknown error")")
-                self.deletionError = true
-            }
-        }
+        // TODO: Commented out because of testing purposes - uncomment it
+        print("onDelete called")
+//        deletionError = false
+//        let assetsToDelete = personImages.map { $0.phAsset }
+//        PHPhotoLibrary.shared().performChanges({
+//            PHAssetChangeRequest.deleteAssets(assetsToDelete as NSFastEnumeration)
+//        }) { success, error in
+//            if success {
+//                let remainingAssets = assetsToDelete.filter { asset in
+//                    let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: [asset.localIdentifier], options: nil)
+//                    return fetchResult.count > 0
+//                }
+//
+//                if remainingAssets.isEmpty {
+//                    print("Successfully deleted all the assets.")
+//                    self.showDeletionSuccessView = true
+//                } else {
+//                    print("Some assets could not be deleted.")
+//                    self.deletionError = true
+//                }
+//            } else {
+//                print("Error deleting assets: \(error?.localizedDescription ?? "Unknown error")")
+//                self.deletionError = true
+//            }
+//        }
     }
 
     func onReview() {

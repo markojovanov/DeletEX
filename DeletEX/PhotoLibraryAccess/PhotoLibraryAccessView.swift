@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PhotoLibraryAccessView: View {
     @StateObject private var viewModel = PhotoLibraryAccssViewModel()
-    @Environment(\.scenePhase) var scenePhase
 
     var body: some View {
         VStack(spacing: 30) {
@@ -63,11 +62,12 @@ struct PhotoLibraryAccessView: View {
         .navigate(isActive: $viewModel.showNextView) {
             ScanPhotosView()
         }
-        .onChange(of: scenePhase) { _, newPhase in
-            if newPhase == .active {
-                viewModel.checkAuthorizationStatus()
-            }
-        }
+        // TODO: Convert it in iOS 15.0 compatible code
+//        .onChange(of: scenePhase) { _, newPhase in
+//            if newPhase == .active {
+//                viewModel.checkAuthorizationStatus()
+//            }
+//        }
     }
 }
 

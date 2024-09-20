@@ -14,7 +14,7 @@ import Vision
 
 protocol FaceDetectionService {
     func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void)
-    func groupPhotosByFace(faceImages: [PhotoItem], completion: @escaping ([[PhotoItem]]) -> Void)
+    func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem], completion: @escaping ([PhotoItem]) -> Void)
 }
 
 // MARK: - FaceDetectionServiceImpl
@@ -51,8 +51,10 @@ class FaceDetectionServiceImpl: FaceDetectionService {
                     self.detectFaces(in: cgImage) { faceObservations in
                         if !faceObservations.isEmpty {
                             for observation in faceObservations {
-                                if let croppedFaceImage = self.cropFaceImage(from: image, faceObservation: observation) {
-                                    photoItems.append(PhotoItem(image: image, croppedFaceImage: croppedFaceImage, phAsset: asset))
+                                if self.assessFaceQuality(faceObservation: observation) {
+                                    if let croppedFaceImage = self.cropFaceImage(from: image, faceObservation: observation) {
+                                        photoItems.append(PhotoItem(image: image, croppedFaceImage: croppedFaceImage, phAsset: asset))
+                                    }
                                 }
                             }
                         }
@@ -67,9 +69,21 @@ class FaceDetectionServiceImpl: FaceDetectionService {
         }
     }
 
-    func groupPhotosByFace(faceImages: [PhotoItem], completion: @escaping ([[PhotoItem]]) -> Void) {
-        // TODO: Create Machine Learning model for face recognition.
-        completion(groupPhotoItemsByPairs(faceImages))
+    func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem], completion: @escaping ([PhotoItem]) -> Void) {
+        let dispatchGroup = DispatchGroup()
+        var newGroup: [PhotoItem] = []
+        for face in faceImages {
+            dispatchGroup.enter()
+            areSamePerson(image1: selectedFace.croppedFaceImage, image2: face.croppedFaceImage) { matchedFace in
+                if matchedFace {
+                    newGroup.append(face)
+                }
+                dispatchGroup.leave()
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            completion(newGroup)
+        }
     }
 
     private func detectFaces(in cgImage: CGImage, completion: @escaping ([VNFaceObservation]) -> Void) {
@@ -118,5 +132,62 @@ class FaceDetectionServiceImpl: FaceDetectionService {
         }
 
         return UIImage(cgImage: cgImage)
+    }
+
+    private func assessFaceQuality(faceObservation: VNFaceObservation) -> Bool {
+        let boundingBox = faceObservation.boundingBox
+        let width = boundingBox.width
+        let height = boundingBox.height
+        if width < 0.1 || height < 0.1 {
+            return false
+        }
+        if let yawValue = faceObservation.yaw as? CGFloat {
+            if abs(yawValue) > 30.0 {
+                return false
+            }
+        }
+        return true
+    }
+
+    private func areSamePerson(image1: UIImage, image2: UIImage, threshold: Float = 0.9, completion: @escaping (Bool) -> Void) {
+        let dispatchGroup = DispatchGroup()
+        var embedding1: [Float] = []
+        var embedding2: [Float] = []
+        dispatchGroup.enter()
+        FaceNet.shared.getFaceEmbedding(image: image1) { embeddings in
+            embedding1 = embeddings
+            dispatchGroup.leave()
+        }
+        dispatchGroup.enter()
+        FaceNet.shared.getFaceEmbedding(image: image2) { embeddings in
+            embedding2 = embeddings
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
+            guard !embedding1.isEmpty, !embedding2.isEmpty else {
+                completion(false)
+                return
+            }
+            let distance = self.calculateEuclideanDistance(embedding1: embedding1, embedding2: embedding2)
+            let isSamePerson = distance < threshold
+            completion(isSamePerson)
+        }
+    }
+
+    private func calculateEuclideanDistance(embedding1: [Float], embedding2: [Float]) -> Float {
+        precondition(embedding1.count == embedding2.count, "Embeddings must be of the same size.")
+        let normalizedEmbedding1 = normalize(embedding: embedding1)
+        let normalizedEmbedding2 = normalize(embedding: embedding2)
+        var sum: Float = 0.0
+        for i in 0 ..< normalizedEmbedding1.count {
+            let diff = normalizedEmbedding1[i] - normalizedEmbedding2[i]
+            sum += diff * diff
+        }
+        return sqrt(sum)
+    }
+
+    private func normalize(embedding: [Float]) -> [Float] {
+        let norm = sqrt(embedding.reduce(0) { $0 + $1 * $1 })
+        return embedding.map { $0 / norm }
     }
 }
