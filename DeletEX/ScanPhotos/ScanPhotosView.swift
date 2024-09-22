@@ -73,7 +73,9 @@ struct ScanPhotosView: View {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
                     ForEach(viewModel.faceImages.indices, id: \.self) { index in
                         Button(action: {
-                            viewModel.onImageSelected(viewModel.faceImages[index])
+                            Task {
+                                await viewModel.onImageSelected(viewModel.faceImages[index])
+                            }
                         }) {
                             Image(uiImage: viewModel.faceImages[index].croppedFaceImage)
                                 .resizable()

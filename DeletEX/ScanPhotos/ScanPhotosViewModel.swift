@@ -19,26 +19,31 @@ class ScanPhotosViewModel: ObservableObject {
         self.faceImagesProcessingService = faceImagesProcessingService
     }
 
-    func onImageSelected(_ photoItem: PhotoItem) {
+    @MainActor
+    func onImageSelected(_ photoItem: PhotoItem) async {
+        let startTime = Date()
         isLoading = true
         selectedPersonImages.removeAll()
-        faceImagesProcessingService.matchPersonPhotos(selectedFace: photoItem, faceImages: faceImages) { [weak self] personPhotos in
-            guard let self = self else { return }
-            let existingAssets = Set(self.selectedPersonImages.map { $0.phAsset })
-            let newPhotos = personPhotos.filter { !existingAssets.contains($0.phAsset) }
-            self.selectedPersonImages.append(contentsOf: newPhotos)
-            self.isLoading = false
-            self.showSelectedImageView = true
-        }
+        let personPhotos = await faceImagesProcessingService.matchPersonPhotos(selectedFace: photoItem, faceImages: faceImages)
+        let existingAssets = Set(self.selectedPersonImages.map { $0.phAsset })
+        let newPhotos = personPhotos.filter { !existingAssets.contains($0.phAsset) }
+        self.selectedPersonImages.append(contentsOf: newPhotos)
+        let timeInterval = Date().timeIntervalSince(startTime) * 1000
+        print("faceRecognition: \(timeInterval) milliseconds")
+        self.isLoading = false
+        self.showSelectedImageView = true
     }
 
     func scanPhotosForFaces() {
         guard !isLoading else { return }
+        let startTime = Date()
         isLoading = true
         faceImagesProcessingService.fetchFacePhotos { [weak self] faceImages in
             guard let self = self else { return }
             self.faceImages = faceImages
             self.isLoading = false
+            let timeInterval = Date().timeIntervalSince(startTime) * 1000
+            print("faceDetection: \(timeInterval) milliseconds")
         }
     }
 

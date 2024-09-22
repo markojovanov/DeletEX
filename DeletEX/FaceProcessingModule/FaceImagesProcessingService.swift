@@ -14,7 +14,7 @@ import Vision
 
 protocol FaceImagesProcessingService {
     func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void)
-    func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem], completion: @escaping ([PhotoItem]) -> Void)
+    func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem]) async -> [PhotoItem]
 }
 
 // MARK: - FaceImagesProcessingServiceImpl
@@ -69,25 +69,23 @@ class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
         }
     }
 
-    func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem], completion: @escaping ([PhotoItem]) -> Void) {
-        let dispatchGroup = DispatchGroup()
-        var newGroup: [PhotoItem] = []
+    func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem]) async -> [PhotoItem] {
+        let embedding1 = await FaceNet.shared.getFaceEmbedding(image: selectedFace.croppedFaceImage)
+        var matchedFaces: [PhotoItem] = []
         for face in faceImages {
-            dispatchGroup.enter()
-            areSamePerson(image1: selectedFace.croppedFaceImage, image2: face.croppedFaceImage) { matchedFace in
-                if matchedFace {
-                    newGroup.append(face)
-                }
-                dispatchGroup.leave()
+            let isMatched = await areSamePerson(embedding1: embedding1, image2: face.croppedFaceImage)
+            if isMatched {
+                matchedFaces.append(face)
             }
         }
-        dispatchGroup.notify(queue: .main) {
-            completion(newGroup)
-        }
+        return matchedFaces
     }
 
     private func detectFaces(in cgImage: CGImage, completion: @escaping ([VNFaceObservation]) -> Void) {
+        let startTime = Date()
         let request = VNDetectFaceRectanglesRequest { request, _ in
+            let timeInterval = Date().timeIntervalSince(startTime) * 1000
+            print("detectFaces: \(timeInterval) milliseconds")
             completion(request.results as? [VNFaceObservation] ?? [])
         }
 
@@ -97,12 +95,6 @@ class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
         } catch {
             print("Failed to perform face detection: \(error)")
             completion([])
-        }
-    }
-
-    private func groupPhotoItemsByPairs(_ photoItems: [PhotoItem]) -> [[PhotoItem]] {
-        return stride(from: 0, to: photoItems.count, by: 2).map { index in
-            Array(photoItems[index ..< min(index + 2, photoItems.count)])
         }
     }
 
@@ -149,29 +141,15 @@ class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
         return true
     }
 
-    private func areSamePerson(image1: UIImage, image2: UIImage, threshold: Float = 0.95, completion: @escaping (Bool) -> Void) {
-        let dispatchGroup = DispatchGroup()
-        var embedding1: [Float] = []
-        var embedding2: [Float] = []
-        dispatchGroup.enter()
-        FaceNet.shared.getFaceEmbedding(image: image1) { embeddings in
-            embedding1 = embeddings
-            dispatchGroup.leave()
-        }
-        dispatchGroup.enter()
-        FaceNet.shared.getFaceEmbedding(image: image2) { embeddings in
-            embedding2 = embeddings
-            dispatchGroup.leave()
-        }
-        dispatchGroup.notify(queue: .main) {
-            guard !embedding1.isEmpty, !embedding2.isEmpty else {
-                completion(false)
-                return
-            }
-            let distance = self.calculateEuclideanDistance(embedding1: embedding1, embedding2: embedding2)
-            let isSamePerson = distance < threshold
-            completion(isSamePerson)
-        }
+    private func areSamePerson(embedding1: [Float], image2: UIImage, threshold: Float = 0.95) async -> Bool {
+        let startTime = Date()
+        let embedding2 = await FaceNet.shared.getFaceEmbedding(image: image2)
+        guard !embedding1.isEmpty, !embedding2.isEmpty else { return false }
+        let distance = calculateEuclideanDistance(embedding1: embedding1, embedding2: embedding2)
+        let isSamePerson = distance < threshold
+        let timeInterval = Date().timeIntervalSince(startTime) * 1000
+        print("areSamePerson: \(timeInterval) milliseconds")
+        return isSamePerson
     }
 
     private func calculateEuclideanDistance(embedding1: [Float], embedding2: [Float]) -> Float {

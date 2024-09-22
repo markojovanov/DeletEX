@@ -8,8 +8,6 @@ import Accelerate
 import TensorFlowLite
 import UIKit
 
-let faceNetQueue = DispatchQueue(label: "com.deletex.facenetQueue")
-
 class FaceNet {
     static let shared = FaceNet()
     private let imgSize = 160
@@ -33,37 +31,30 @@ class FaceNet {
     }
 
     /// Gets a face embedding using FaceNet
-    func getFaceEmbedding(image: UIImage, completion: @escaping ([Float]) -> Void) {
-        faceNetQueue.async {
-            do {
-                guard let inputBuffer = self.processImage(image) else { return }
-//                let inputTensor = try self.interpreter.input(at: 0)
-//                print("Input tensor shape: \(inputTensor.shape)")
-                try self.interpreter.copy(inputBuffer, toInputAt: 0)
-                try self.interpreter.invoke()
-                let outputTensor = try self.interpreter.output(at: 0)
-//                print("Output tensor shape: \(outputTensor.shape)")
-                let outputCount = outputTensor.data.count / MemoryLayout<Float>.size
-                guard outputCount > 0 else {
-                    completion([])
-                    return
-                }
-                let embeddings = outputTensor.data.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) -> [Float] in
-                    let baseAddress = ptr.baseAddress?.assumingMemoryBound(to: Float.self)
-                    return Array(UnsafeBufferPointer(start: baseAddress, count: outputCount))
-                }
-                completion(embeddings)
-            } catch {
-                print("Error during FaceNet processing: \(error)")
-                completion([])
+    func getFaceEmbedding(image: UIImage) async -> [Float] {
+        guard let inputBuffer = processImage(image) else { return [] }
+
+        do {
+            try interpreter.copy(inputBuffer, toInputAt: 0)
+            try interpreter.invoke()
+            let outputTensor = try interpreter.output(at: 0)
+            let outputCount = outputTensor.data.count / MemoryLayout<Float>.size
+            guard outputCount > 0 else { return [] }
+            let embeddings = outputTensor.data.withUnsafeBytes { (ptr: UnsafeRawBufferPointer) -> [Float] in
+                let baseAddress = ptr.baseAddress?.assumingMemoryBound(to: Float.self)
+                return Array(UnsafeBufferPointer(start: baseAddress, count: outputCount))
             }
+            return embeddings
+        } catch {
+            print("Error during FaceNet processing: \(error)")
+            return []
         }
     }
 
     /// Resize the given UIImage to 160x160 and convert it to normalized RGB Data.
     func processImage(_ image: UIImage) -> Data? {
+        let startTime = Date()
         let imgSize = CGSize(width: 160, height: 160)
-
         guard let resizedImage = ImageUtils.resizeImageWithCoreGraphics(image, newSize: imgSize) else {
             return nil
         }
@@ -81,7 +72,6 @@ class FaceNet {
         }
 
         context.draw(resizedImage, in: CGRect(x: 0, y: 0, width: Int(imgSize.width), height: Int(imgSize.height)))
-
         guard let imageData = context.data else { return nil }
 
         var inputData = Data()
@@ -104,7 +94,8 @@ class FaceNet {
                 inputData.append(contentsOf: withUnsafeBytes(of: normalizedBlue) { Data($0) })
             }
         }
-
+        let timeInterval = Date().timeIntervalSince(startTime) * 1000
+        print("processImage: \(timeInterval) milliseconds")
         return inputData
     }
 }
