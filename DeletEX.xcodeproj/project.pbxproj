@@ -12,11 +12,12 @@
 		4D1864452C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1864442C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift */; };
 		4D1864472C7944F700A716B6 /* DeleteConfirmationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1864462C7944F700A716B6 /* DeleteConfirmationViewModel.swift */; };
 		4D18644A2C794B1600A716B6 /* ReviewPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1864492C794B1600A716B6 /* ReviewPhotosViewModel.swift */; };
+		4D320FCA2C9DF53000BA6486 /* ImageUtill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D320FC92C9DF52A00BA6486 /* ImageUtill.swift */; };
 		4D4F63712C6EB8430097DC2F /* PhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F63702C6EB8430097DC2F /* PhotoItem.swift */; };
 		4D4F63742C6EBF490097DC2F /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F63732C6EBF490097DC2F /* SuccessView.swift */; };
 		4D55C3542C70C07D004B73E8 /* DeletionErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */; };
 		4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */; };
-		4D55C35A2C70EAF7004B73E8 /* FaceDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */; };
+		4D55C35A2C70EAF7004B73E8 /* FaceImagesProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */; };
 		4D58B7A22C9C9AC4004B5DB3 /* FaceNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */; };
 		4DA8A0942C9C9F7E0013367E /* facenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 4DA8A0932C9C9F7E0013367E /* facenet.tflite */; };
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
@@ -36,11 +37,12 @@
 		4D1864442C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAccssViewModel.swift; sourceTree = "<group>"; };
 		4D1864462C7944F700A716B6 /* DeleteConfirmationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationViewModel.swift; sourceTree = "<group>"; };
 		4D1864492C794B1600A716B6 /* ReviewPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPhotosViewModel.swift; sourceTree = "<group>"; };
+		4D320FC92C9DF52A00BA6486 /* ImageUtill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtill.swift; sourceTree = "<group>"; };
 		4D4F63702C6EB8430097DC2F /* PhotoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoItem.swift; sourceTree = "<group>"; };
 		4D4F63732C6EBF490097DC2F /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		4D55C3532C70C07D004B73E8 /* DeletionErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionErrorBannerView.swift; sourceTree = "<group>"; };
 		4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosViewModel.swift; sourceTree = "<group>"; };
-		4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectionService.swift; sourceTree = "<group>"; };
+		4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceImagesProcessingService.swift; sourceTree = "<group>"; };
 		4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNet.swift; sourceTree = "<group>"; };
 		4DA8A0932C9C9F7E0013367E /* facenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = facenet.tflite; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
@@ -118,19 +120,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4D55C3582C70EAE2004B73E8 /* FaceDetection */ = {
+		4D55C3582C70EAE2004B73E8 /* FaceProcessingModule */ = {
 			isa = PBXGroup;
 			children = (
 				4DA8A0932C9C9F7E0013367E /* facenet.tflite */,
-				4D55C3592C70EAF7004B73E8 /* FaceDetectionService.swift */,
+				4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */,
 				4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */,
 			);
-			path = FaceDetection;
+			path = FaceProcessingModule;
 			sourceTree = "<group>";
 		};
 		4DAB30A92C68E7C8002D037A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				4D320FC92C9DF52A00BA6486 /* ImageUtill.swift */,
 				4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */,
 			);
 			path = Util;
@@ -175,7 +178,7 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
-				4D55C3582C70EAE2004B73E8 /* FaceDetection */,
+				4D55C3582C70EAE2004B73E8 /* FaceProcessingModule */,
 				4D55C3552C70D25C004B73E8 /* Models */,
 				4D55C3522C70C06B004B73E8 /* Views */,
 				4D4F63722C6EBF3B0097DC2F /* Success */,
@@ -321,13 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D55C35A2C70EAF7004B73E8 /* FaceDetectionService.swift in Sources */,
+				4D55C35A2C70EAF7004B73E8 /* FaceImagesProcessingService.swift in Sources */,
 				4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */,
 				4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */,
 				4D18644A2C794B1600A716B6 /* ReviewPhotosViewModel.swift in Sources */,
 				4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */,
 				4D1864472C7944F700A716B6 /* DeleteConfirmationViewModel.swift in Sources */,
 				4D1864452C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift in Sources */,
+				4D320FCA2C9DF53000BA6486 /* ImageUtill.swift in Sources */,
 				4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */,
 				4D55C3542C70C07D004B73E8 /* DeletionErrorBannerView.swift in Sources */,
 				4D4F63712C6EB8430097DC2F /* PhotoItem.swift in Sources */,

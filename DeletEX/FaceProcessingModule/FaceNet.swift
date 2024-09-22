@@ -14,6 +14,7 @@ class FaceNet {
     static let shared = FaceNet()
     private let imgSize = 160
     private let embeddingDim = 128
+    private let maxRGBValue: Float32 = 255.0
     private var interpreter: Interpreter
 
     private init() {
@@ -35,7 +36,7 @@ class FaceNet {
     func getFaceEmbedding(image: UIImage, completion: @escaping ([Float]) -> Void) {
         faceNetQueue.async {
             do {
-                let inputBuffer = self.convertUIImageToBuffer(image: image)
+                guard let inputBuffer = self.processImage(image) else { return }
 //                let inputTensor = try self.interpreter.input(at: 0)
 //                print("Input tensor shape: \(inputTensor.shape)")
                 try self.interpreter.copy(inputBuffer, toInputAt: 0)
@@ -59,49 +60,51 @@ class FaceNet {
         }
     }
 
-    /// Resize the given UIImage and convert it to a Tensor
-    private func convertUIImageToBuffer(image: UIImage) -> Data {
-        let resizedImage = image.resized(to: CGSize(width: imgSize, height: imgSize))
-        guard let pixelBuffer = resizedImage?.pixelBuffer() else {
-            return Data()
+    /// Resize the given UIImage to 160x160 and convert it to normalized RGB Data.
+    func processImage(_ image: UIImage) -> Data? {
+        let imgSize = CGSize(width: 160, height: 160)
+
+        guard let resizedImage = ImageUtils.resizeImageWithCoreGraphics(image, newSize: imgSize) else {
+            return nil
         }
-        return pixelBuffer
-    }
-}
 
-/// Extension to resize UIImage
-extension UIImage {
-    func resized(to size: CGSize) -> UIImage? {
-        UIGraphicsBeginImageContext(size)
-        draw(in: CGRect(origin: .zero, size: size))
-        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return resizedImage
-    }
+        guard let context = CGContext(
+            data: nil,
+            width: Int(imgSize.width),
+            height: Int(imgSize.height),
+            bitsPerComponent: 8,
+            bytesPerRow: Int(imgSize.width) * 4,
+            space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue
+        ) else {
+            return nil
+        }
 
-    func pixelBuffer() -> Data? {
-        guard let cgImage = cgImage else { return nil }
-        let width = cgImage.width
-        let height = cgImage.height
-        let rgbDataSize = width * height * 3 // RGB only
-        var rgbData = [Float](repeating: 0, count: rgbDataSize)
+        context.draw(resizedImage, in: CGRect(x: 0, y: 0, width: Int(imgSize.width), height: Int(imgSize.height)))
 
-        guard let pixelData = cgImage.dataProvider?.data else { return nil }
-        let data = CFDataGetBytePtr(pixelData)
+        guard let imageData = context.data else { return nil }
 
-        for y in 0..<height {
-            for x in 0..<width {
-                let pixelIndex = (y * width + x) * 4
-                let r = Float(data![pixelIndex]) / 255.0
-                let g = Float(data![pixelIndex + 1]) / 255.0
-                let b = Float(data![pixelIndex + 2]) / 255.0
+        var inputData = Data()
+        for row in 0 ..< Int(imgSize.height) {
+            for col in 0 ..< Int(imgSize.width) {
+                let offset = 4 * (row * context.width + col)
 
-                let rgbIndex = (y * width + x) * 3
-                rgbData[rgbIndex] = r
-                rgbData[rgbIndex + 1] = g
-                rgbData[rgbIndex + 2] = b
+                let red = imageData.load(fromByteOffset: offset, as: UInt8.self)
+                let green = imageData.load(fromByteOffset: offset + 1, as: UInt8.self)
+                let blue = imageData.load(fromByteOffset: offset + 2, as: UInt8.self)
+
+                // Normalize the RGB values
+                let normalizedRed = Float32(red) / maxRGBValue
+                let normalizedGreen = Float32(green) / maxRGBValue
+                let normalizedBlue = Float32(blue) / maxRGBValue
+
+                // Append normalized values to the Data object in RGB order
+                inputData.append(contentsOf: withUnsafeBytes(of: normalizedRed) { Data($0) })
+                inputData.append(contentsOf: withUnsafeBytes(of: normalizedGreen) { Data($0) })
+                inputData.append(contentsOf: withUnsafeBytes(of: normalizedBlue) { Data($0) })
             }
         }
-        return Data(buffer: UnsafeBufferPointer(start: &rgbData, count: rgbData.count))
+
+        return inputData
     }
 }

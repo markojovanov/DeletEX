@@ -13,23 +13,20 @@ class ScanPhotosViewModel: ObservableObject {
     @Published var selectedPersonImages: [PhotoItem] = []
     @Published var showSelectedImageView = false
 
-    private let faceDetectionService: FaceDetectionService
+    private let faceImagesProcessingService: FaceImagesProcessingService
 
-    init(faceDetectionService: FaceDetectionService = FaceDetectionServiceImpl()) {
-        self.faceDetectionService = faceDetectionService
+    init(faceImagesProcessingService: FaceImagesProcessingService = FaceImagesProcessingServiceImpl()) {
+        self.faceImagesProcessingService = faceImagesProcessingService
     }
 
     func onImageSelected(_ photoItem: PhotoItem) {
         isLoading = true
-        selectedPersonImages = []
-        faceDetectionService.matchPersonPhotos(selectedFace: photoItem, faceImages: faceImages) { personPhotos in
-            var existingAssets = Set(self.selectedPersonImages.map { $0.phAsset })
-            for item in personPhotos {
-                if !existingAssets.contains(item.phAsset) {
-                    self.selectedPersonImages.append(item)
-                    existingAssets.insert(item.phAsset)
-                }
-            }
+        selectedPersonImages.removeAll()
+        faceImagesProcessingService.matchPersonPhotos(selectedFace: photoItem, faceImages: faceImages) { [weak self] personPhotos in
+            guard let self = self else { return }
+            let existingAssets = Set(self.selectedPersonImages.map { $0.phAsset })
+            let newPhotos = personPhotos.filter { !existingAssets.contains($0.phAsset) }
+            self.selectedPersonImages.append(contentsOf: newPhotos)
             self.isLoading = false
             self.showSelectedImageView = true
         }
@@ -38,7 +35,7 @@ class ScanPhotosViewModel: ObservableObject {
     func scanPhotosForFaces() {
         guard !isLoading else { return }
         isLoading = true
-        faceDetectionService.fetchFacePhotos { [weak self] faceImages in
+        faceImagesProcessingService.fetchFacePhotos { [weak self] faceImages in
             guard let self = self else { return }
             self.faceImages = faceImages
             self.isLoading = false

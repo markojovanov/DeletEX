@@ -1,5 +1,5 @@
 //
-//  FaceDetectionService.swift
+//  FaceImagesProcessingService.swift
 //  DeletEX
 //
 //  Created by Marko Jovanov on 17.8.24.
@@ -10,16 +10,16 @@ import Photos
 import UIKit
 import Vision
 
-// MARK: - FaceDetectionService
+// MARK: - FaceImagesProcessingService
 
-protocol FaceDetectionService {
+protocol FaceImagesProcessingService {
     func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void)
     func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem], completion: @escaping ([PhotoItem]) -> Void)
 }
 
-// MARK: - FaceDetectionServiceImpl
+// MARK: - FaceImagesProcessingServiceImpl
 
-class FaceDetectionServiceImpl: FaceDetectionService {
+class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
     func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void) {
         let fetchOptions = PHFetchOptions()
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
@@ -149,7 +149,7 @@ class FaceDetectionServiceImpl: FaceDetectionService {
         return true
     }
 
-    private func areSamePerson(image1: UIImage, image2: UIImage, threshold: Float = 0.9, completion: @escaping (Bool) -> Void) {
+    private func areSamePerson(image1: UIImage, image2: UIImage, threshold: Float = 0.95, completion: @escaping (Bool) -> Void) {
         let dispatchGroup = DispatchGroup()
         var embedding1: [Float] = []
         var embedding2: [Float] = []
