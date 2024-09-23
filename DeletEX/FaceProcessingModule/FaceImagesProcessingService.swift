@@ -13,58 +13,50 @@ import Vision
 // MARK: - FaceImagesProcessingService
 
 protocol FaceImagesProcessingService {
-    func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void)
+    func fetchFacePhotos() async -> [PhotoItem]
     func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem]) async -> [PhotoItem]
 }
 
 // MARK: - FaceImagesProcessingServiceImpl
 
 class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
-    func fetchFacePhotos(completion: @escaping ([PhotoItem]) -> Void) {
+    func fetchFacePhotos() async -> [PhotoItem] {
         let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
         let imageManager = PHImageManager.default()
         let requestOptions = PHImageRequestOptions()
         requestOptions.isSynchronous = true
         requestOptions.deliveryMode = .highQualityFormat
-
+        requestOptions.resizeMode = .exact
         var photoItems: [PhotoItem] = []
 
-        DispatchQueue.global(qos: .userInitiated).async {
-            let group = DispatchGroup()
-
-            allPhotos.enumerateObjects { asset, _, _ in
-                group.enter()
-                imageManager.requestImage(for: asset,
-                                          targetSize: CGSize(width: 300, height: 300),
-                                          contentMode: .aspectFit,
-                                          options: requestOptions) { [weak self] image, _ in
-                    guard let self = self else {
-                        group.leave()
-                        return
-                    }
-                    guard let image = image, let cgImage = image.cgImage else {
-                        group.leave()
-                        return
-                    }
-
-                    self.detectFaces(in: cgImage) { faceObservations in
-                        if !faceObservations.isEmpty {
-                            for observation in faceObservations {
-                                if self.assessFaceQuality(faceObservation: observation) {
-                                    if let croppedFaceImage = self.cropFaceImage(from: image, faceObservation: observation) {
-                                        photoItems.append(PhotoItem(image: image, croppedFaceImage: croppedFaceImage, phAsset: asset))
-                                    }
-                                }
-                            }
+        for index in 0 ..< allPhotos.count {
+            let asset = allPhotos.object(at: index)
+            if let image = await requestImage(
+                for: asset,
+                imageManager: imageManager,
+                targetSize: CGSize(width: 400, height: 550),
+                options: requestOptions
+            ),
+                let cgImage = image.cgImage {
+                let faceObservations = await detectFaces(in: cgImage)
+                if !faceObservations.isEmpty {
+                    for observation in faceObservations {
+                        if let croppedFaceImage = cropFaceImage(from: image, faceObservation: observation) {
+                            photoItems.append(PhotoItem(image: image, croppedFaceImage: croppedFaceImage, phAsset: asset))
                         }
-                        group.leave()
                     }
                 }
             }
+        }
+        return photoItems
+    }
 
-            group.notify(queue: .main) {
-                completion(photoItems)
+    private func requestImage(for asset: PHAsset, imageManager: PHImageManager, targetSize: CGSize, options: PHImageRequestOptions) async -> UIImage? {
+        return await withCheckedContinuation { continuation in
+            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .default, options: options) { image, _ in
+                continuation.resume(returning: image)
             }
         }
     }
@@ -81,20 +73,24 @@ class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
         return matchedFaces
     }
 
-    private func detectFaces(in cgImage: CGImage, completion: @escaping ([VNFaceObservation]) -> Void) {
+    private func detectFaces(in cgImage: CGImage) async -> [VNFaceObservation] {
         let startTime = Date()
-        let request = VNDetectFaceRectanglesRequest { request, _ in
-            let timeInterval = Date().timeIntervalSince(startTime) * 1000
-            print("detectFaces: \(timeInterval) milliseconds")
-            completion(request.results as? [VNFaceObservation] ?? [])
-        }
 
-        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-        do {
-            try handler.perform([request])
-        } catch {
-            print("Failed to perform face detection: \(error)")
-            completion([])
+        return await withCheckedContinuation { continuation in
+            let request = VNDetectFaceRectanglesRequest { request, _ in
+                let timeInterval = Date().timeIntervalSince(startTime) * 1000
+                print("detectFaces: \(timeInterval) milliseconds")
+                let results = request.results as? [VNFaceObservation] ?? []
+                continuation.resume(returning: results)
+            }
+
+            let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+            do {
+                try handler.perform([request])
+            } catch {
+                print("Failed to perform face detection: \(error)")
+                continuation.resume(returning: [])
+            }
         }
     }
 
@@ -126,25 +122,12 @@ class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
         return UIImage(cgImage: cgImage)
     }
 
-    private func assessFaceQuality(faceObservation: VNFaceObservation) -> Bool {
-        let boundingBox = faceObservation.boundingBox
-        let width = boundingBox.width
-        let height = boundingBox.height
-        if width < 0.1 || height < 0.1 {
-            return false
-        }
-        if let yawValue = faceObservation.yaw as? CGFloat {
-            if abs(yawValue) > 30.0 {
-                return false
-            }
-        }
-        return true
-    }
-
     private func areSamePerson(embedding1: [Float], image2: UIImage, threshold: Float = 0.95) async -> Bool {
         let startTime = Date()
         let embedding2 = await FaceNet.shared.getFaceEmbedding(image: image2)
-        guard !embedding1.isEmpty, !embedding2.isEmpty else { return false }
+        guard !embedding1.isEmpty, !embedding2.isEmpty else {
+            return false
+        }
         let distance = calculateEuclideanDistance(embedding1: embedding1, embedding2: embedding2)
         let isSamePerson = distance < threshold
         let timeInterval = Date().timeIntervalSince(startTime) * 1000

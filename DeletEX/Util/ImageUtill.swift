@@ -5,11 +5,7 @@
 //  Created by Marko Jovanov on 20.9.24.
 //
 
-import AVFoundation
-import SwiftUI
 import UIKit
-
-// MARK: - ImageUtils
 
 enum ImageUtils {
     static func resizeImageWithCoreGraphics(_ image: UIImage, newSize: CGSize) -> CGImage? {

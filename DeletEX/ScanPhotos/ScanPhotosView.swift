@@ -24,12 +24,18 @@ struct ScanPhotosView: View {
         }
         .navigationTitle("People")
         .navigationBarBackButtonHidden(true)
-        .onAppear(perform: viewModel.scanPhotosForFaces)
+        .onAppear {
+            Task {
+                await viewModel.scanPhotosForFaces()
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    viewModel.rescanPhotosForFaces()
-                } label: {
+                Button(action: {
+                    Task {
+                        await viewModel.rescanPhotosForFaces()
+                    }
+                }) {
                     Text("Rescan")
                 }
             }
@@ -52,7 +58,11 @@ struct ScanPhotosView: View {
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
-            Button(action: viewModel.scanPhotosForFaces) {
+            Button(action: {
+                Task {
+                    await viewModel.scanPhotosForFaces()
+                }
+            }) {
                 Text("Try Again")
                     .font(.subheadline)
                     .fontWeight(.semibold)
