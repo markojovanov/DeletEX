@@ -82,24 +82,26 @@ struct ScanPhotosView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))], spacing: 16) {
                     ForEach(viewModel.faceImages.indices, id: \.self) { index in
-                        Button(action: {
-                            Task {
-                                await viewModel.onImageSelected(viewModel.faceImages[index])
+                        if viewModel.faceImages[index].forFaceRecognition {
+                            Button(action: {
+                                Task {
+                                    await viewModel.onImageSelected(viewModel.faceImages[index])
+                                }
+                            }) {
+                                Image(uiImage: viewModel.faceImages[index].croppedFaceImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 100, height: 100)
+                                    .clipped()
+                                    .cornerRadius(12)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.black.opacity(0.3), lineWidth: 1)
+                                    )
+                                    .shadow(radius: 4)
                             }
-                        }) {
-                            Image(uiImage: viewModel.faceImages[index].croppedFaceImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 100)
-                                .clipped()
-                                .cornerRadius(12)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.black.opacity(0.3), lineWidth: 1)
-                                )
-                                .shadow(radius: 4)
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
                     }
                 }
                 .padding()

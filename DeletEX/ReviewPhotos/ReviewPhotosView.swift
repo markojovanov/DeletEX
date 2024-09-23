@@ -142,5 +142,5 @@ struct ReviewPhotosView: View {
 }
 
 #Preview {
-    ReviewPhotosView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset())])
+    ReviewPhotosView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset(), forFaceRecognition: true)])
 }

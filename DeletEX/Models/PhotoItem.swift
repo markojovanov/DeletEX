@@ -12,4 +12,5 @@ struct PhotoItem: Hashable {
     let image: UIImage
     let croppedFaceImage: UIImage
     let phAsset: PHAsset
+    let forFaceRecognition: Bool
 }

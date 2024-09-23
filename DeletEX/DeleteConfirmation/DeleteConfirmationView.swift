@@ -93,5 +93,5 @@ struct DeleteConfirmationView: View {
 }
 
 #Preview {
-    DeleteConfirmationView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset())])
+    DeleteConfirmationView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset(), forFaceRecognition: true)])
 }
