@@ -44,6 +44,7 @@
 		4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosViewModel.swift; sourceTree = "<group>"; };
 		4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceImagesProcessingService.swift; sourceTree = "<group>"; };
 		4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNet.swift; sourceTree = "<group>"; };
+		4DA1188B2CA319A20086BB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4DA8A0932C9C9F7E0013367E /* facenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = facenet.tflite; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
+				4DA1188B2CA319A20086BB9A /* Info.plist */,
 				4D55C3582C70EAE2004B73E8 /* FaceProcessingModule */,
 				4D55C3552C70D25C004B73E8 /* Models */,
 				4D55C3522C70C06B004B73E8 /* Views */,
@@ -479,6 +481,7 @@
 				DEVELOPMENT_TEAM = R7V669986H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeletEX/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage, and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -517,6 +520,7 @@
 				DEVELOPMENT_TEAM = R7V669986H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DeletEX/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage, and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
