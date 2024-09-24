@@ -12,9 +12,11 @@ class DeleteConfirmationViewModel: ObservableObject {
     @Published var showDeletionSuccessView = false
     @Published var deletionError = false
     var personImages: [PhotoItem]
+    var selectedImage: PhotoItem
 
-    init(personImages: [PhotoItem]) {
+    init(selectedImage: PhotoItem,personImages: [PhotoItem]) {
         self.personImages = personImages
+        self.selectedImage = selectedImage
     }
 
     func onDelete() {

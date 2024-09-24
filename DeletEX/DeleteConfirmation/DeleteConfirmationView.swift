@@ -11,23 +11,21 @@ import SwiftUI
 struct DeleteConfirmationView: View {
     @StateObject private var viewModel: DeleteConfirmationViewModel
 
-    init(personImages: [PhotoItem]) {
-        _viewModel = StateObject(wrappedValue: DeleteConfirmationViewModel(personImages: personImages))
+    init(selectedImage: PhotoItem, personImages: [PhotoItem]) {
+        _viewModel = StateObject(wrappedValue: DeleteConfirmationViewModel(selectedImage: selectedImage, personImages: personImages))
     }
 
     var body: some View {
         VStack(spacing: 30) {
-            if let personImage = viewModel.personImages.first {
-                Image(uiImage: personImage.croppedFaceImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 120, height: 120)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle().stroke(Color.white, lineWidth: 4)
-                    )
-                    .shadow(radius: 10)
-            }
+            Image(uiImage: viewModel.selectedImage.croppedFaceImage)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 120, height: 120)
+                .clipShape(Circle())
+                .overlay(
+                    Circle().stroke(Color.white, lineWidth: 4)
+                )
+                .shadow(radius: 10)
 
             Text("You've selected \(viewModel.personImages.count) photos.")
                 .font(.title2)
@@ -93,5 +91,8 @@ struct DeleteConfirmationView: View {
 }
 
 #Preview {
-    DeleteConfirmationView(personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset(), forFaceRecognition: true)])
+    DeleteConfirmationView(
+        selectedImage: PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset(), forFaceRecognition: true),
+        personImages: [PhotoItem(image: UIImage(), croppedFaceImage: UIImage(), phAsset: PHAsset(), forFaceRecognition: true)]
+    )
 }

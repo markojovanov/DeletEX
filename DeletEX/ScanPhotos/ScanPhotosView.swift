@@ -38,17 +38,25 @@ struct ScanPhotosView: View {
                 }) {
                     Text("Rescan")
                 }
+                .disabled(viewModel.isLoading)
             }
         }
         .navigate(isActive: $viewModel.showSelectedImageView) {
-            DeleteConfirmationView(personImages: viewModel.selectedPersonImages)
+            if let selectedPersonImage = viewModel.selectedPersonImage {
+                DeleteConfirmationView(selectedImage: selectedPersonImage ,personImages: viewModel.selectedPersonImages)
+            }
         }
     }
 
     private var loadingView: some View {
-        ProgressView("Scanning Photos...")
-            .progressViewStyle(CircularProgressViewStyle())
-            .padding()
+        VStack(spacing: 0) {
+            ProgressView(viewModel.loadingText)
+                .progressViewStyle(CircularProgressViewStyle())
+                .padding()
+            Text(viewModel.estimatedTimeLeft)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+        }
     }
 
     private var noFaceImagesView: some View {

@@ -12,6 +12,9 @@ class ScanPhotosViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var selectedPersonImages: [PhotoItem] = []
     @Published var showSelectedImageView = false
+    @Published var loadingText = "Detecting faces..."
+    @Published var estimatedTimeLeft = ""
+    var selectedPersonImage: PhotoItem?
 
     private let faceImagesProcessingService: FaceImagesProcessingService
 
@@ -22,8 +25,11 @@ class ScanPhotosViewModel: ObservableObject {
     @MainActor
     func onImageSelected(_ photoItem: PhotoItem) async {
         let startTime = Date()
+        loadingText = "Searching for matching faces..."
         isLoading = true
+        selectedPersonImage = photoItem
         selectedPersonImages.removeAll()
+        calculateEstimatedTime(for: faceImages.count)
         let personPhotos = await faceImagesProcessingService.matchPersonPhotos(selectedFace: photoItem, faceImages: faceImages)
         let existingAssets = Set(selectedPersonImages.map { $0.phAsset })
         let newPhotos = personPhotos.filter { !existingAssets.contains($0.phAsset) }
@@ -49,5 +55,19 @@ class ScanPhotosViewModel: ObservableObject {
     func rescanPhotosForFaces() async {
         faceImages = []
         await scanPhotosForFaces()
+    }
+
+    private func calculateEstimatedTime(for totalImages: Int) {
+        let processingTimePerImage = 0.05
+        let totalTime = processingTimePerImage * Double(totalImages)
+
+        if totalTime > 60 {
+            var minutes = Int(totalTime) / 60
+            let seconds = Int(totalTime) % 60
+            minutes = seconds > 30 ? minutes + 1 : minutes
+            estimatedTimeLeft = "This will take around \(minutes) minute\(minutes > 1 ? "s" : "")..."
+        } else {
+            estimatedTimeLeft = "This will take around \(totalTime) second\(totalTime != 1 ? "s" : "")..."
+        }
     }
 }
