@@ -28,7 +28,7 @@ class PhotoLibraryAccssViewModel: ObservableObject {
     }
 
     func handleAuthorizationStatus(_ status: PHAuthorizationStatus) {
-        if status == .authorized {
+        if status == .authorized || status == .limited {
             showNextView = true
         } else {
             if hasRequestedAccessBefore {
