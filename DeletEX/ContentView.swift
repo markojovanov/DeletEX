@@ -30,10 +30,10 @@ struct ContentView: View {
 
     private func checkAuthorizationStatus() {
         let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
-        if status != .authorized || status != .limited {
-            showRequestLibraryAccessView = true
-        } else {
+        if status == .authorized || status == .limited {
             showScanPhotosView = true
+        } else {
+            showRequestLibraryAccessView = true
         }
     }
 }

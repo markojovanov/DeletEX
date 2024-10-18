@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4D0543562CC1DD460031D482 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4D0543552CC1DD460031D482 /* PrivacyInfo.xcprivacy */; };
-		4D0543582CC1E4310031D482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D0543572CC1E4310031D482 /* LaunchScreen.storyboard */; };
 		4D0E43922C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E43912C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift */; };
 		4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0E43942C6ACD1100ECB9D1 /* ReviewPhotosView.swift */; };
 		4D1864452C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1864442C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift */; };
@@ -21,6 +20,7 @@
 		4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */; };
 		4D55C35A2C70EAF7004B73E8 /* FaceImagesProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */; };
 		4D58B7A22C9C9AC4004B5DB3 /* FaceNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */; };
+		4D969EC42CC291AC000C6933 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D969EC32CC291AC000C6933 /* Launch Screen.storyboard */; };
 		4DA8A0942C9C9F7E0013367E /* facenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 4DA8A0932C9C9F7E0013367E /* facenet.tflite */; };
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
 		4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */; };
@@ -35,7 +35,6 @@
 /* Begin PBXFileReference section */
 		34649E69FA2A03C6C42B31F4 /* Pods-DeletEX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeletEX.release.xcconfig"; path = "Target Support Files/Pods-DeletEX/Pods-DeletEX.release.xcconfig"; sourceTree = "<group>"; };
 		4D0543552CC1DD460031D482 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = ../PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
-		4D0543572CC1E4310031D482 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D0E43912C6ABCBD00ECB9D1 /* PhotoLibraryAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAccessView.swift; sourceTree = "<group>"; };
 		4D0E43942C6ACD1100ECB9D1 /* ReviewPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPhotosView.swift; sourceTree = "<group>"; };
 		4D1864442C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAccssViewModel.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosViewModel.swift; sourceTree = "<group>"; };
 		4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceImagesProcessingService.swift; sourceTree = "<group>"; };
 		4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNet.swift; sourceTree = "<group>"; };
+		4D969EC32CC291AC000C6933 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4DA1188B2CA319A20086BB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4DA8A0932C9C9F7E0013367E /* facenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = facenet.tflite; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
@@ -165,7 +165,6 @@
 		4DFC5C2A2C38B7FD005B5823 = {
 			isa = PBXGroup;
 			children = (
-				4D0543572CC1E4310031D482 /* LaunchScreen.storyboard */,
 				4DFC5C352C38B7FD005B5823 /* DeletEX */,
 				4DFC5C342C38B7FD005B5823 /* Products */,
 				078DA36CA6A52D97CD23A171 /* Pods */,
@@ -199,6 +198,7 @@
 				4DFC5C3A2C38B801005B5823 /* Assets.xcassets */,
 				4DFC5C3C2C38B801005B5823 /* Preview Content */,
 				4D0543552CC1DD460031D482 /* PrivacyInfo.xcprivacy */,
+				4D969EC32CC291AC000C6933 /* Launch Screen.storyboard */,
 			);
 			path = DeletEX;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				4DA8A0942C9C9F7E0013367E /* facenet.tflite in Resources */,
 				4DFC5C3E2C38B801005B5823 /* Preview Assets.xcassets in Resources */,
 				4D0543562CC1DD460031D482 /* PrivacyInfo.xcprivacy in Resources */,
-				4D0543582CC1E4310031D482 /* LaunchScreen.storyboard in Resources */,
+				4D969EC42CC291AC000C6933 /* Launch Screen.storyboard in Resources */,
 				4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +482,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -495,6 +496,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -522,6 +524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -535,6 +538,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to help you organize, manage and delete unwanted photos. Your privacy is our priority, and your photos will only be used for this purpose.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

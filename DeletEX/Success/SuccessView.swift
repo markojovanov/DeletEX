@@ -28,13 +28,15 @@ struct SuccessView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
             Spacer()
+            Image("text_logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 160)
+                .foregroundColor(.white)
+                .padding(.bottom, 60)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(LinearGradient(
-            gradient: Gradient(colors: [.white, .green.opacity(0.15)]),
-            startPoint: .top, endPoint: .bottom
-        )
-        .edgesIgnoringSafeArea(.all))
+        .background(Color.primaryBackground)
         .navigationBarBackButtonHidden(true)
     }
 }
