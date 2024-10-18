@@ -23,7 +23,6 @@ enum ImageUtils {
         ) else {
             return nil
         }
-
         context.interpolationQuality = .high
         context.draw(cgImage, in: CGRect(origin: .zero, size: newSize))
         return context.makeImage()

@@ -34,7 +34,7 @@ struct DeleteConfirmationView: View {
                 .foregroundColor(.primary)
 
             VStack(spacing: 15) {
-                Text("Are you sure you want to delete all the selected images?")
+                Text("Are you sure you want to delete all selected images?")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.primary)
@@ -78,7 +78,7 @@ struct DeleteConfirmationView: View {
         .background(
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color(UIColor.systemBackground))
-                .shadow(radius: 10)
+                .shadow(color: .secondary, radius: 10)
         )
         .padding(.horizontal, 20)
         .navigate(isActive: $viewModel.showReviewView) {

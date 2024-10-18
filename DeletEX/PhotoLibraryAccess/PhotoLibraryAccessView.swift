@@ -19,9 +19,10 @@ struct PhotoLibraryAccessView: View {
                 .frame(width: 100, height: 100)
                 .foregroundColor(.blue)
 
-            Text("Access Required")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
+            Text("Photo library access required")
+                .font(.title)
+                .fontWeight(.bold)
+                .multilineTextAlignment(.center)
 
             Text("This app needs access to your photo library to process and manage your images. You can delete photos after processing them.")
                 .multilineTextAlignment(.center)
@@ -42,6 +43,12 @@ struct PhotoLibraryAccessView: View {
                 .cornerRadius(12)
             }
             .padding(.horizontal, 40)
+
+            Text("You can change this option later in the Settings app.")
+                .font(.footnote)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .foregroundColor(.secondary)
         }
         .padding()
         .background(

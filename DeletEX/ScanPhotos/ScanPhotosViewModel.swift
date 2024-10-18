@@ -43,6 +43,8 @@ class ScanPhotosViewModel: ObservableObject {
     @MainActor
     func scanPhotosForFaces() async {
         guard !isLoading else { return }
+        loadingText = "Detecting faces..."
+        estimatedTimeLeft = ""
         let startTime = Date()
         isLoading = true
         faceImages = await faceImagesProcessingService.fetchFacePhotos()

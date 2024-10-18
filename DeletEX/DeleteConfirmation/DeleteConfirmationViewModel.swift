@@ -32,7 +32,7 @@ class DeleteConfirmationViewModel: ObservableObject {
                 }
 
                 if remainingAssets.isEmpty {
-                    print("Successfully deleted all the assets.")
+                    print("Successfully deleted all assets.")
                     self.showDeletionSuccessView = true
                 } else {
                     print("Some assets could not be deleted.")

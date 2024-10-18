@@ -53,7 +53,7 @@ class ReviewPhotosViewModel: ObservableObject {
                 }
 
                 if remainingAssets.isEmpty {
-                    print("Successfully deleted all the selected assets.")
+                    print("Successfully deleted all selected assets.")
                     self.showDeletionSuccessView = true
                 } else {
                     print("Some selected assets could not be deleted.")
