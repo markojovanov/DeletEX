@@ -122,8 +122,7 @@ struct ScanPhotosView: View {
             Image(systemName: "info.circle.fill")
                 .foregroundColor(.white)
                 .font(.system(size: 20, weight: .medium))
-
-            Text("Select your ex from the photos below to review or delete all related memories.")
+            Text("Selecting a clearer photo of your ex will help us find and match faces more accurately, making it easier for you to review and delete those memories.")
                 .font(.system(size: 16))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
