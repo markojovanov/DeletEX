@@ -30,17 +30,13 @@ struct PhotoLibraryAccessView: View {
                 .foregroundColor(.secondary)
 
             Button(action: viewModel.requestPhotoLibraryAccess) {
-                HStack {
-                    Image(systemName: "lock.open.fill")
-                        .font(.headline)
-                    Text("Give Access")
-                        .font(.headline)
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(12)
+                Text("Continue")
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(12)
             }
             .padding(.horizontal, 40)
 
