@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showRequestLibraryAccessView = false
-    @State private var showScanPhotosView = false
+    @State private var showFaceDetectionOptionsView = false
 
     var body: some View {
         NavigationView {
@@ -22,8 +22,8 @@ struct ContentView: View {
                 .navigate(isActive: $showRequestLibraryAccessView) {
                     PhotoLibraryAccessView()
                 }
-                .navigate(isActive: $showScanPhotosView) {
-                    ScanPhotosView()
+                .navigate(isActive: $showFaceDetectionOptionsView) {
+                    FaceDetectionOptionsView()
                 }
         }
     }
@@ -31,7 +31,7 @@ struct ContentView: View {
     private func checkAuthorizationStatus() {
         let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         if status == .authorized || status == .limited {
-            showScanPhotosView = true
+            showFaceDetectionOptionsView = true
         } else {
             showRequestLibraryAccessView = true
         }

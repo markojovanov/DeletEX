@@ -64,7 +64,7 @@ struct PhotoLibraryAccessView: View {
             )
         }
         .navigate(isActive: $viewModel.showNextView) {
-            ScanPhotosView()
+            FaceDetectionOptionsView()
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {

@@ -25,6 +25,7 @@
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
 		4DAB30AE2C68FC5F002D037A /* ScanPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */; };
 		4DAB30B12C690F98002D037A /* DeleteConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */; };
+		4DDCAA4F2CCD01B80035F47C /* FaceDetectionOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDCAA4E2CCD01B80035F47C /* FaceDetectionOptionsView.swift */; };
 		4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */; };
 		4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFC5C382C38B7FD005B5823 /* ContentView.swift */; };
 		4DFC5C3B2C38B801005B5823 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DFC5C3A2C38B801005B5823 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
 		4DAB30B02C690F98002D037A /* DeleteConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConfirmationView.swift; sourceTree = "<group>"; };
+		4DDCAA4E2CCD01B80035F47C /* FaceDetectionOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectionOptionsView.swift; sourceTree = "<group>"; };
 		4DFC5C332C38B7FD005B5823 /* DeletEX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeletEX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletEXApp.swift; sourceTree = "<group>"; };
 		4DFC5C382C38B7FD005B5823 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,14 @@
 			path = DeleteConfirmation;
 			sourceTree = "<group>";
 		};
+		4DDCAA4D2CCD01270035F47C /* FaceDetectionOptions */ = {
+			isa = PBXGroup;
+			children = (
+				4DDCAA4E2CCD01B80035F47C /* FaceDetectionOptionsView.swift */,
+			);
+			path = FaceDetectionOptions;
+			sourceTree = "<group>";
+		};
 		4DFC5C2A2C38B7FD005B5823 = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +195,7 @@
 			children = (
 				4DA1188B2CA319A20086BB9A /* Info.plist */,
 				4D55C3582C70EAE2004B73E8 /* FaceProcessingModule */,
+				4DDCAA4D2CCD01270035F47C /* FaceDetectionOptions */,
 				4D55C3552C70D25C004B73E8 /* Models */,
 				4D55C3522C70C06B004B73E8 /* Views */,
 				4D4F63722C6EBF3B0097DC2F /* Success */,
@@ -342,6 +353,7 @@
 				4D1864472C7944F700A716B6 /* DeleteConfirmationViewModel.swift in Sources */,
 				4D1864452C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift in Sources */,
 				4D320FCA2C9DF53000BA6486 /* ImageUtill.swift in Sources */,
+				4DDCAA4F2CCD01B80035F47C /* FaceDetectionOptionsView.swift in Sources */,
 				4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */,
 				4D55C3542C70C07D004B73E8 /* DeletionErrorBannerView.swift in Sources */,
 				4D4F63712C6EB8430097DC2F /* PhotoItem.swift in Sources */,
@@ -504,7 +516,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -546,7 +558,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.markojovanov.DeletEX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
