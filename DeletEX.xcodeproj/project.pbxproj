@@ -20,6 +20,8 @@
 		4D55C3572C70E74B004B73E8 /* ScanPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */; };
 		4D55C35A2C70EAF7004B73E8 /* FaceImagesProcessingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */; };
 		4D58B7A22C9C9AC4004B5DB3 /* FaceNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */; };
+		4D7967D22CCE652300CB14D1 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7967D12CCE651F00CB14D1 /* PhotoPicker.swift */; };
+		4D7967D42CCE659600CB14D1 /* FaceDetectionOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7967D32CCE658E00CB14D1 /* FaceDetectionOptionsViewModel.swift */; };
 		4D969EC42CC291AC000C6933 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D969EC32CC291AC000C6933 /* Launch Screen.storyboard */; };
 		4DA8A0942C9C9F7E0013367E /* facenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 4DA8A0932C9C9F7E0013367E /* facenet.tflite */; };
 		4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */; };
@@ -48,8 +50,10 @@
 		4D55C3562C70E74B004B73E8 /* ScanPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosViewModel.swift; sourceTree = "<group>"; };
 		4D55C3592C70EAF7004B73E8 /* FaceImagesProcessingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceImagesProcessingService.swift; sourceTree = "<group>"; };
 		4D58B7A12C9C9AC4004B5DB3 /* FaceNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNet.swift; sourceTree = "<group>"; };
+		4D7967D12CCE651F00CB14D1 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		4D7967D32CCE658E00CB14D1 /* FaceDetectionOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectionOptionsViewModel.swift; sourceTree = "<group>"; };
 		4D969EC32CC291AC000C6933 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		4DA1188B2CA319A20086BB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4DA1188B2CA319A20086BB9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DA8A0932C9C9F7E0013367E /* facenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = facenet.tflite; sourceTree = "<group>"; };
 		4DAB30AA2C68E7E1002D037A /* NavigationLink+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationLink+Extension.swift"; sourceTree = "<group>"; };
 		4DAB30AD2C68FC5F002D037A /* ScanPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanPhotosView.swift; sourceTree = "<group>"; };
@@ -167,7 +171,9 @@
 		4DDCAA4D2CCD01270035F47C /* FaceDetectionOptions */ = {
 			isa = PBXGroup;
 			children = (
+				4D7967D12CCE651F00CB14D1 /* PhotoPicker.swift */,
 				4DDCAA4E2CCD01B80035F47C /* FaceDetectionOptionsView.swift */,
+				4D7967D32CCE658E00CB14D1 /* FaceDetectionOptionsViewModel.swift */,
 			);
 			path = FaceDetectionOptions;
 			sourceTree = "<group>";
@@ -193,8 +199,6 @@
 		4DFC5C352C38B7FD005B5823 /* DeletEX */ = {
 			isa = PBXGroup;
 			children = (
-				4DA1188B2CA319A20086BB9A /* Info.plist */,
-				4D55C3582C70EAE2004B73E8 /* FaceProcessingModule */,
 				4DDCAA4D2CCD01270035F47C /* FaceDetectionOptions */,
 				4D55C3552C70D25C004B73E8 /* Models */,
 				4D55C3522C70C06B004B73E8 /* Views */,
@@ -204,8 +208,10 @@
 				4DAB30AF2C690F41002D037A /* DeleteConfirmation */,
 				4DAB30AC2C68E81E002D037A /* ScanPhotos */,
 				4DAB30A92C68E7C8002D037A /* Util */,
+				4D55C3582C70EAE2004B73E8 /* FaceProcessingModule */,
 				4DFC5C362C38B7FD005B5823 /* DeletEXApp.swift */,
 				4DFC5C382C38B7FD005B5823 /* ContentView.swift */,
+				4DA1188B2CA319A20086BB9A /* Info.plist */,
 				4DFC5C3A2C38B801005B5823 /* Assets.xcassets */,
 				4DFC5C3C2C38B801005B5823 /* Preview Content */,
 				4D0543552CC1DD460031D482 /* PrivacyInfo.xcprivacy */,
@@ -353,11 +359,13 @@
 				4D1864472C7944F700A716B6 /* DeleteConfirmationViewModel.swift in Sources */,
 				4D1864452C793E5E00A716B6 /* PhotoLibraryAccssViewModel.swift in Sources */,
 				4D320FCA2C9DF53000BA6486 /* ImageUtill.swift in Sources */,
+				4D7967D42CCE659600CB14D1 /* FaceDetectionOptionsViewModel.swift in Sources */,
 				4DDCAA4F2CCD01B80035F47C /* FaceDetectionOptionsView.swift in Sources */,
 				4D0E43952C6ACD1100ECB9D1 /* ReviewPhotosView.swift in Sources */,
 				4D55C3542C70C07D004B73E8 /* DeletionErrorBannerView.swift in Sources */,
 				4D4F63712C6EB8430097DC2F /* PhotoItem.swift in Sources */,
 				4D4F63742C6EBF490097DC2F /* SuccessView.swift in Sources */,
+				4D7967D22CCE652300CB14D1 /* PhotoPicker.swift in Sources */,
 				4DAB30AB2C68E7E1002D037A /* NavigationLink+Extension.swift in Sources */,
 				4DFC5C392C38B7FD005B5823 /* ContentView.swift in Sources */,
 				4DFC5C372C38B7FD005B5823 /* DeletEXApp.swift in Sources */,

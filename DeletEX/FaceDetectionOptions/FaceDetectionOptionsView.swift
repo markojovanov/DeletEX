@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FaceDetectionOptionsView: View {
-    @State var showNextView = false
+    @StateObject private var viewModel = FaceDetectionOptionsViewModel()
 
     var body: some View {
         VStack(alignment: .center) {
@@ -30,33 +30,48 @@ struct FaceDetectionOptionsView: View {
                 .multilineTextAlignment(.center)
             Spacer()
             Button(action: {
-                showNextView = true
+                withAnimation {
+                    viewModel.isPhotoPickerPresented = true
+                }
             }) {
-                Text("Pick a Few Photos")
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
+                HStack {
+                    Image(systemName: "photo.on.rectangle")
+                        .foregroundColor(.white)
+                    Text("Pick a Few Photos")
+                        .fontWeight(.semibold)
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(14)
             }
             Button(action: {
-                showNextView = true
+                Task {
+                    await viewModel.fetchAllPhotos()
+                }
             }) {
-                Text("Browse All Memories")
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .foregroundColor(.primary)
-                    .cornerRadius(12)
+                HStack {
+                    Image(systemName: "tray.full")
+                        .foregroundColor(.primary)
+                    Text("Browse All Memories")
+                        .fontWeight(.semibold)
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .foregroundColor(.primary)
+                .cornerRadius(14)
             }
             .padding(.vertical, 10)
         }
         .padding()
         .navigationBarHidden(true)
-        .navigate(isActive: $showNextView) {
-            ScanPhotosView()
+        .sheet(isPresented: $viewModel.isPhotoPickerPresented) {
+            PhotoPickerView(viewModel: viewModel)
+        }
+        .navigate(isActive: $viewModel.showNextView) {
+            ScanPhotosView(viewModel: ScanPhotosViewModel(selectedImages: viewModel.selectedPhotos))
         }
     }
 }

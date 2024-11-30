@@ -13,49 +13,35 @@ import Vision
 // MARK: - FaceImagesProcessingService
 
 protocol FaceImagesProcessingService {
-    func fetchFacePhotos() async -> [PhotoItem]
+    func detectFacePhotos(photoItems: [PhotoItem]) async -> [PhotoItem]
     func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem]) async -> [PhotoItem]
 }
 
 // MARK: - FaceImagesProcessingServiceImpl
 
 class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
-    func fetchFacePhotos() async -> [PhotoItem] {
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-        let imageManager = PHImageManager.default()
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.isSynchronous = true
-        requestOptions.deliveryMode = .highQualityFormat
-        requestOptions.resizeMode = .exact
-        var photoItems: [PhotoItem] = []
+    func detectFacePhotos(photoItems: [PhotoItem]) async -> [PhotoItem] {
+        var newPhotoItems: [PhotoItem] = []
 
-        for index in 0 ..< allPhotos.count {
-            let asset = allPhotos.object(at: index)
-            if let image = await requestImage(
-                for: asset,
-                imageManager: imageManager,
-                targetSize: CGSize(width: 400, height: 550),
-                options: requestOptions
-            ),
-                let cgImage = image.cgImage {
-                let faceObservations = await detectFaces(in: cgImage)
-                if !faceObservations.isEmpty {
-                    for observation in faceObservations {
-                        if let croppedFaceImage = cropFaceImage(from: image, faceObservation: observation) {
-                            photoItems.append(PhotoItem(
-                                image: image,
-                                croppedFaceImage: croppedFaceImage,
-                                phAsset: asset,
-                                forFaceRecognition: isImageSuitableForRecognition(image: image, faceObservation: observation)
-                            ))
-                        }
+        for index in 0 ..< photoItems.count {
+            guard let cgImage = photoItems[index].image.cgImage else {
+                break
+            }
+            let faceObservations = await detectFaces(in: cgImage)
+            if !faceObservations.isEmpty {
+                for observation in faceObservations {
+                    if let croppedFaceImage = cropFaceImage(from: photoItems[index].image, faceObservation: observation) {
+                        newPhotoItems.append(PhotoItem(
+                            image: photoItems[index].image,
+                            croppedFaceImage: croppedFaceImage,
+                            phAsset: photoItems[index].phAsset,
+                            forFaceRecognition: isImageSuitableForRecognition(image: photoItems[index].image, faceObservation: observation)
+                        ))
                     }
                 }
             }
         }
-        return photoItems
+        return newPhotoItems
     }
 
     func matchPersonPhotos(selectedFace: PhotoItem, faceImages: [PhotoItem]) async -> [PhotoItem] {
@@ -68,14 +54,6 @@ class FaceImagesProcessingServiceImpl: FaceImagesProcessingService {
             }
         }
         return matchedFaces
-    }
-
-    private func requestImage(for asset: PHAsset, imageManager: PHImageManager, targetSize: CGSize, options: PHImageRequestOptions) async -> UIImage? {
-        return await withCheckedContinuation { continuation in
-            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .default, options: options) { image, _ in
-                continuation.resume(returning: image)
-            }
-        }
     }
 
     private func detectFaces(in cgImage: CGImage) async -> [VNFaceObservation] {

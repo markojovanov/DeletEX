@@ -8,6 +8,7 @@
 import Foundation
 
 class ScanPhotosViewModel: ObservableObject {
+    @Published var selectedImages: [PhotoItem]
     @Published var faceImages: [PhotoItem] = []
     @Published var isLoading = false
     @Published var selectedPersonImages: [PhotoItem] = []
@@ -18,8 +19,12 @@ class ScanPhotosViewModel: ObservableObject {
 
     private let faceImagesProcessingService: FaceImagesProcessingService
 
-    init(faceImagesProcessingService: FaceImagesProcessingService = FaceImagesProcessingServiceImpl()) {
+    init(
+        faceImagesProcessingService: FaceImagesProcessingService = FaceImagesProcessingServiceImpl(),
+        selectedImages: [PhotoItem]
+    ) {
         self.faceImagesProcessingService = faceImagesProcessingService
+        self.selectedImages = selectedImages
     }
 
     @MainActor
@@ -47,7 +52,7 @@ class ScanPhotosViewModel: ObservableObject {
         estimatedTimeLeft = ""
         let startTime = Date()
         isLoading = true
-        faceImages = await faceImagesProcessingService.fetchFacePhotos()
+        faceImages = await faceImagesProcessingService.detectFacePhotos(photoItems: selectedImages)
         isLoading = false
         let timeInterval = Date().timeIntervalSince(startTime) * 1000
         print("faceDetection: \(timeInterval) milliseconds")

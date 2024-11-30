@@ -10,7 +10,7 @@ import SwiftUI
 import Vision
 
 struct ScanPhotosView: View {
-    @StateObject private var viewModel = ScanPhotosViewModel()
+    @ObservedObject var viewModel: ScanPhotosViewModel
 
     var body: some View {
         VStack {
@@ -23,7 +23,6 @@ struct ScanPhotosView: View {
             }
         }
         .navigationTitle("People")
-        .navigationBarBackButtonHidden(true)
         .onAppear {
             Task {
                 await viewModel.scanPhotosForFaces()
@@ -139,5 +138,5 @@ struct ScanPhotosView: View {
 }
 
 #Preview {
-    ScanPhotosView()
+    ScanPhotosView(viewModel: ScanPhotosViewModel(selectedImages: []))
 }
