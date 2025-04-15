@@ -74,7 +74,7 @@ DeletEX guarantees that:
 
 ## 🧑‍💻 Author
 
-**Марко Јованов**  
+**Marko Jovanov**  
 📍 Skopje, North Macedonia  
 📧 marko.jovanov15@hotmail.com  
 
